@@ -1,54 +1,14 @@
-import { useState } from 'react';
-import './Header.scss';
-
-import { FaGithub, FaBars, FaTimes, FaDiscord } from 'react-icons/fa';
-
+import { Link, NavLink } from 'react-router-dom';
 export function Header() {
-    const [menuOpen, setMenuOpen] = useState(false);
-
     return (
-        <header className="header">
-            <nav className="navbar">
-                <a href="/" className="navbar__logo">
-                    Tristan<span className="padname">Jacob</span>
-                </a>
-
-                <div className={`navbar__links ${menuOpen ? 'active' : ''}`}>
-                    <a href="/">Home</a>
-                    <a href="/about">About</a>
-                    <a href="/projects">Projects</a>
-                    <a href="/sponsors">Sponsors</a>
-                    <a href="/partners">Partners</a>
-                    <a href="/contact">Contact</a>
-                </div>
-
-                <div className="navbar__actions">
-                    <a
-                        href="https://github.com/Tristan-GPT"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="navbar__theme"
-                    >
-                        <FaGithub />
-                    </a>
-
-                    <a
-                        href="https://discord.com/users/705425854825496656"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="navbar__theme"
-                    >
-                        <FaDiscord />
-                    </a>
-
-                    <button
-                        className="navbar__burger"
-                        onClick={() => setMenuOpen(!menuOpen)}
-                        aria-label="Menu"
-                    >
-                        {menuOpen ? <FaTimes /> : <FaBars />}
-                    </button>
-                </div>
+        <header className="site-header shell">
+            <Link to="/" className="wordmark" aria-label="Tristan · home">
+                Tristan<span aria-hidden="true">.</span>
+            </Link>
+            <nav aria-label="Main navigation">
+                <NavLink to="/projects">Work</NavLink>
+                <NavLink to="/about">About</NavLink>
+                <NavLink to="/contact">Contact</NavLink>
             </nav>
         </header>
     );

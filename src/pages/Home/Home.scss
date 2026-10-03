@@ -1,15 +1,83 @@
-body,
-#root {
-    min-height: 100vh;
-    min-height: 100dvh;
+.hero {
+    padding: 100px 0 66px;
+}
 
-    display: grid;
-    place-items: center;
+.hero h1 {
+    font-size: clamp(60px, 6.3vw, 80px);
+    letter-spacing: -0.06em;
+    line-height: 1.1;
+    margin-top: 26px;
+}
 
-    font-family: Inter, sans-serif;
+.hero-role {
+    font-size: 26px;
+    letter-spacing: -0.6px;
+    margin-top: 12px;
+}
 
-    background:
-        radial-gradient(circle at top left, #5b21b6 0%, transparent 35%),
-        radial-gradient(circle at bottom right, #2563eb 0%, transparent 35%),
-        linear-gradient(135deg, #0f172a, #020617);
+.hero-role span {
+    color: var(--muted);
+    padding-inline: 5px;
+}
+
+.hero-description {
+    font-size: 22px;
+    line-height: 1.7;
+    max-width: 520px;
+    color: var(--muted);
+    margin-top: 25px;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 32px;
+}
+
+.hero-footnote {
+    margin-top: 64px;
+}
+
+.contact-section {
+    padding-block: 64px 88px;
+}
+
+.contact-section h2 {
+    font-size: 44px;
+    letter-spacing: -1.4px;
+    margin: 17px 0 21px;
+}
+
+@media (min-width: 1500px) {
+    .hero {
+        padding-top: 120px;
+    }
+}
+
+@media (max-width: 800px) {
+    .hero {
+        padding-top: 72px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding-block: 64px 42px;
+    }
+    .hero h1 {
+        font-size: 62px;
+    }
+    .hero-role {
+        font-size: 23px;
+    }
+    .hero-description {
+        font-size: 20px;
+    }
+    .hero-footnote {
+        margin-top: 45px;
+    }
+    .contact-section {
+        padding-block: 45px 60px;
+    }
 }

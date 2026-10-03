@@ -1,14 +1,16 @@
-import './NotFound.scss';
-
+import { Link } from 'react-router-dom';
 export function NotFound() {
     return (
-        <>
-            <h1>This page don't exist.</h1>
-            <button className="button">
-                <a href="/" className="secondary homego">
-                    Go on the main page
-                </a>
-            </button>
-        </>
+        <section className="page-intro not-found">
+            <p className="eyebrow">404 · Page not found</p>
+            <h1>Page not found.</h1>
+            <p>
+                The page you’re looking for doesn’t exist. You can head back to
+                the homepage.
+            </p>
+            <Link className="button" to="/">
+                Back to home <span aria-hidden="true">→</span>
+            </Link>
+        </section>
     );
 }

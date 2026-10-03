@@ -1,0 +1,59 @@
+.project {
+    padding-inline: 85px 160px;
+    padding-block: 56px 64px;
+    border-bottom: 1px solid var(--border);
+}
+
+.project-body {
+    max-width: 620px;
+}
+
+.project h3 {
+    font-size: clamp(40px, 4.2vw, 52px);
+    letter-spacing: -1px;
+    line-height: 1.15;
+    margin: 20px 0 24px;
+}
+
+.project-body > p:not(.eyebrow, .meta) {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 560px;
+}
+
+.stack {
+    margin: 26px 0 16px;
+}
+
+.technical-details {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.technical-details summary {
+    cursor: pointer;
+    width: fit-content;
+    padding-block: 10px;
+    min-height: 44px;
+}
+
+.technical-details p {
+    max-width: 480px;
+    padding-bottom: 8px;
+}
+
+@media (max-width: 800px) {
+    .project {
+        padding-inline: 52px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .project {
+        padding: 40px 0 48px;
+    }
+    .project h3 {
+        font-size: 40px;
+    }
+}

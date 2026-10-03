@@ -1,193 +1,54 @@
-.header {
-    position: fixed;
-    top: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
-}
-
-.navbar {
+.site-header {
+    height: 112px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    width: min(900px, calc(100vw - 32px));
-
-    padding: 14px 22px;
-
-    border-radius: 999px;
-
-    background: rgba(22, 28, 45, 0.7);
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.25),
-        inset 0 1px rgba(255, 255, 255, 0.05);
-
-    .padname {
-        padding: 0 4px;
-    }
-
-    &__logo {
-        font-size: 1rem;
-        font-weight: 700;
-        color: white;
-        text-decoration: none;
-        span {
-            color: #7c8fff;
-        }
-    }
-
-    &__links {
-        display: flex;
-        gap: 2rem;
-
-        a {
-            position: relative;
-            color: rgba(255, 255, 255, 0.72);
-            font-size: 0.95rem;
-            transition: 0.3s;
-            text-decoration: none;
-
-            &::after {
-                content: '';
-                position: absolute;
-                left: 0;
-                bottom: -6px;
-
-                width: 0;
-                height: 2px;
-
-                border-radius: 2px;
-
-                background: linear-gradient(90deg, #4f8cff, #a855f7);
-
-                transition: 0.3s;
-            }
-
-            &:hover {
-                color: white;
-
-                &::after {
-                    width: 100%;
-                }
-            }
-        }
-    }
-
-    &__theme {
-        display: grid;
-        place-items: center;
-
-        width: 42px;
-        height: 42px;
-
-        border: none;
-        outline: none;
-
-        border-radius: 50%;
-
-        background: rgba(255, 255, 255, 0.05);
-
-        color: white;
-        text-decoration: none;
-
-        cursor: pointer;
-
-        transition: 0.3s;
-
-        svg {
-            font-size: 1.15rem;
-            flex-shrink: 0;
-        }
-
-        &:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: rotate(20deg);
-        }
-    }
-
-    &__actions {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-    &__burger {
-        display: none;
-
-        width: 42px;
-        height: 42px;
-
-        border: none;
-        border-radius: 50%;
-
-        background: rgba(255, 255, 255, 0.05);
-
-        color: white;
-        cursor: pointer;
-
-        transition: 0.3s;
-
-        svg {
-            font-size: 1rem;
-        }
-
-        &:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-    }
+    border-bottom: 1px solid var(--border);
 }
 
-@media (max-width: 850px) {
-    .navbar {
-        width: calc(100vw - 24px);
+.wordmark {
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: -0.8px;
+    text-decoration: none;
+}
 
-        &__burger {
-            display: grid;
-            place-items: center;
-        }
+.wordmark span {
+    color: var(--accent);
+}
 
-        &__links {
-            position: absolute;
+nav {
+    display: flex;
+    gap: 34px;
+}
 
-            top: calc(100% + 12px);
-            left: 0;
-            right: 0;
+nav a {
+    padding-block: 12px;
+    text-decoration: none;
+    font-size: 15px;
+    color: var(--muted);
+}
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.4rem;
+nav a:hover,
+nav a.active {
+    color: #30251f;
+}
 
-            padding: 1.5rem;
+nav a.active {
+    text-decoration: underline;
+}
 
-            border-radius: 24px;
-
-            background: rgba(22, 28, 45, 0.95);
-            backdrop-filter: blur(20px);
-
-            border: 1px solid rgba(255, 255, 255, 0.08);
-
-            opacity: 0;
-            visibility: hidden;
-
-            transform: translateY(-10px);
-
-            transition: 0.3s;
-
-            pointer-events: none;
-
-            &.active {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-                pointer-events: auto;
-            }
-        }
+@media (max-width: 480px) {
+    .site-header {
+        height: 86px;
+    }
+    .wordmark {
+        font-size: 21px;
+    }
+    nav {
+        gap: 20px;
+    }
+    nav a {
+        font-size: 13px;
     }
 }

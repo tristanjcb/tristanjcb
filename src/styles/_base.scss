@@ -1,0 +1,141 @@
+:root {
+    font-family: Inter, 'Segoe UI', sans-serif;
+    color: #30251f;
+    background: #ece5db;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    --muted: #6d6055;
+    --border: #cfc4b7;
+    --accent: #755943;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+    transition:
+        color 180ms,
+        background-color 180ms,
+        border-color 180ms;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+::selection {
+    background: #dfcfbd;
+    color: #30251f;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 5px;
+    border-radius: 2px;
+}
+
+main:focus {
+    outline: none;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 500;
+}
+
+p {
+    line-height: 1.75;
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 14px 20px;
+    background: #3f3027;
+    color: #ece5db;
+    font-size: 15px;
+    text-decoration: none;
+    border: 1px solid #3f3027;
+    border-radius: 3px;
+    min-height: 48px;
+}
+
+.button:hover {
+    background: #614936;
+    color: #ece5db;
+    border-color: #614936;
+}
+
+.text-link {
+    font-size: 15px;
+    display: inline-flex;
+    gap: 18px;
+    align-items: center;
+    min-height: 44px;
+    text-decoration: underline;
+    text-decoration-color: #bbaa99;
+}
+
+.text-link:hover {
+    text-decoration-color: var(--accent);
+}
+
+.meta {
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+h2 {
+    font-size: 25px;
+    letter-spacing: -0.5px;
+    line-height: 1.4;
+}
+
+.quiet-link {
+    font-size: 15px;
+    color: var(--muted);
+    text-decoration: none;
+    padding-block: 12px;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

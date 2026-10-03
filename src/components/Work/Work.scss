@@ -1,0 +1,33 @@
+.section-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    gap: 20px;
+}
+
+.work .section-heading h2 {
+    font-size: 30px;
+}
+
+.section-end {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+@media (max-width: 480px) {
+    .section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+    .section-end {
+        align-items: start;
+        flex-direction: column;
+        gap: 3px;
+    }
+}

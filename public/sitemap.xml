@@ -3,33 +3,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://www.tristangpt.tech/</loc>
+        <loc>https://www.tristan.kresov.com/</loc>
         <priority>1.0</priority>
     </url>
 
     <url>
-        <loc>https://www.tristangpt.tech/projects</loc>
+        <loc>https://www.tristan.kresov.com/projects</loc>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://www.tristangpt.tech/about</loc>
+        <loc>https://www.tristan.kresov.com/about</loc>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://www.tristangpt.tech/contact</loc>
+        <loc>https://www.tristan.kresov.com/contact</loc>
         <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://www.tristangpt.tech/sponsors</loc>
-        <priority>0.7</priority>
-    </url>
-
-    <url>
-        <loc>https://www.tristangpt.tech/partners</loc>
-        <priority>0.7</priority>
     </url>
 
 </urlset>
