@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 <h1 align="center">Hi, I'm Tristan 👋</h1>
-=======
-<h1 align="center">👋 Hi, I'm Tristan</h1>
-<h2 align="center">⭐Mynauk 4 All⭐</h2>
->>>>>>> 85470759d0dd3eed4d01bd56c7229e6d5132489a
 
 <p align="center">
   <strong>Full-Stack Developer · DevSecOps Enthusiast · Open Source Contributor</strong>
@@ -22,7 +17,6 @@
 
 ## About Me
 
-<<<<<<< HEAD
 I'm a self-taught developer who started programming in 2020.
 
 I mainly work with **TypeScript, Node.js, Python and modern web technologies**, with a growing focus on **DevSecOps, infrastructure and application security**.
@@ -79,12 +73,6 @@ Currently, I'm focused on:
 ---
 
 ## GitHub Activity
-=======
-- 🌐 Portfolio → <https://www.tristangpt.tech>
-- 💬 Discord → **@juste_tristan**
-- 📧 Email → **[tristangpt.pro@gmail.com](mailto:tristangpt.pro@gmail.com)**
-- 📷 Instagram → **@tristanjcb**
->>>>>>> 85470759d0dd3eed4d01bd56c7229e6d5132489a
 
 <p align="center">
   <img
@@ -103,12 +91,7 @@ Currently, I'm focused on:
 - Email · **<tristan@kresov.com>**
 
 <p align="center">
-<<<<<<< HEAD
   <sub>
     Open to collaboration, open-source projects and interesting technical discussions.
   </sub>
-=======
-  ⭐ Thanks for visiting my profile! Feel free to explore my repositories, check out my projects, or reach out if you'd like to collaborate.
-  Made with ❤️ by Tristan Jacob.
->>>>>>> 85470759d0dd3eed4d01bd56c7229e6d5132489a
 </p>
