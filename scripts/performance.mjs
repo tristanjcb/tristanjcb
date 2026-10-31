@@ -1,5 +1,6 @@
 import { chromium } from '@playwright/test';
 import fs from 'node:fs/promises';
+import { execFileSync } from 'node:child_process';
 import { gzipSync } from 'node:zlib';
 const base = process.env.PERF_URL ?? 'http://127.0.0.1:3100';
 const name = process.env.PERF_LABEL ?? 'baseline';
@@ -112,6 +113,11 @@ await fs.writeFile(
   JSON.stringify(
     {
       label: name,
+      buildId: (await fs.readFile('.next/BUILD_ID', 'utf8')).trim(),
+      sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+      sourceDirty: Boolean(
+        execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' }).trim(),
+      ),
       base,
       note: 'Lab measurements, cold contexts/profile; see run counts. Interaction timing is a lab sample, not field INP. JS gzip is computed over fetched scripts. Heap is JS only; GPU memory is not exposed.',
       results,

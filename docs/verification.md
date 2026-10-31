@@ -26,3 +26,13 @@ La session navigateur autorisée a permis de vérifier les 28 pages FR/EN : cont
 Ce contrôle a révélé une erreur serveur sur les slugs inconnus. Le chargement du contenu tolère désormais un dossier absent (cas d'un journal vide omis du bundle serverless) et inclut explicitement les futurs MDX dans le traçage. Les paramètres publiés sont fermés avec `dynamicParams = false` pour obtenir des 404 avant tout rendu streamé. Les tests vérifient aussi le contenu de la 404 bilingue, et pas uniquement le statut HTTP.
 
 Après correctif : build, types, lint et format réussis ; 7 tests unitaires et 10 tests navigateur réussis. Les smoke tests locaux utilisent désormais un serveur dédié au port 3100 afin de ne pas réutiliser un serveur de développement déjà ouvert. La vérification du nouveau déploiement Vercel suit ce correctif ; les parcours authentifiés dans le navigateur ne doivent pas être confondus avec une exécution Playwright distante sans session.
+
+## Prompt 03 — Cinematic Aurora
+
+La scène Three.js, le fallback opalescent, les cinq états de matière, le Floating IDE, Explore, Curtain et les micro-interactions sont implémentés. Les modules, lots et limites figurent dans `cinematic.md` ; les mesures de référence, intermédiaires et finales sont dans `performance/`.
+
+Vérifications locales exécutées : installation figée, Oxlint, Oxfmt, types stricts, build, **11 tests unitaires et 20 scénarios navigateur**. Ces scénarios couvrent également WebGL actif sur desktop et mobile à activation explicite, perte de contexte, réduction des mouvements, paramètres clavier, thèmes, pause hors écran, mode statique persistant, tablette et SSR sans JavaScript. Les captures clair/sombre, desktop/mobile et fallback sont générées comme artifacts.
+
+La première CI GitHub cinématique a exécuté les **20 scénarios avec succès, sans ignorer les deux scénarios GPU**, sur un runner distinct du poste local. Les derniers relevés du build corrigé donnent un LCP médian de 56 ms desktop / 644 ms mobile simulé, contre 60 / 604 ms avant la 3D ; le JS gzip chargé est d’environ 305 ko avec scène et 161 ko sur mobile automatique. Les budgets enregistrés passent. Ces valeurs ne sont pas des statistiques terrain.
+
+La transparence des ornements a été corrigée après inspection des captures pour éviter leur écriture dans le depth buffer devant la matière. Les tests de fermeture des pôles préviennent aussi les fissures de surface générative. Le correctif repasse le build et les 20 scénarios. Main et la production restent inchangés ; aucune promotion automatique.

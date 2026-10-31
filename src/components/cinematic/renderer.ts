@@ -80,6 +80,7 @@ export function createAurora(
     color: 0x9188f8,
     transparent: true,
     opacity: 0.12,
+    depthWrite: false,
   });
   const lines = new THREE.LineSegments(linesGeometry, linesMaterial);
   scene.add(lines);
@@ -112,6 +113,7 @@ export function createAurora(
     color: 0x74ddea,
     transparent: true,
     opacity: 0.18,
+    depthWrite: false,
   });
   for (let i = 0; i < 3; i++) {
     const ring = new THREE.Mesh(ringGeometry, ringMaterial);

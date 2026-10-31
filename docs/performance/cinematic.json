@@ -1,5 +1,8 @@
 {
   "label": "cinematic",
+  "buildId": "z6zlqW2QLuUjJug0CZP9Z",
+  "sourceCommit": "246172546549ac3227997fbd8484f416efc61895",
+  "sourceDirty": true,
   "base": "http://127.0.0.1:3100",
   "note": "Lab measurements, cold contexts/profile; see run counts. Interaction timing is a lab sample, not field INP. JS gzip is computed over fetched scripts. Heap is JS only; GPU memory is not exposed.",
   "results": [
@@ -8,11 +11,11 @@
       "run": 1,
       "lcp": 80,
       "cls": 0.00009858410493827159,
-      "longTaskMs": 245,
+      "longTaskMs": 227,
       "interactionMs": 72,
-      "loadMs": 81.2999999821186,
-      "resources": 432598,
-      "frameP95Ms": 16.699999999999818,
+      "loadMs": 78.2000000178814,
+      "resources": 432656,
+      "frameP95Ms": 16.700000000000728,
       "heapBytes": 10600000,
       "canvas": true,
       "gpu": {
@@ -24,20 +27,20 @@
         "triangles": "4440",
         "frameCpuMs": "0.10"
       },
-      "javaScriptRaw": 1094350,
-      "javaScriptGzip": 304541
+      "javaScriptRaw": 1094547,
+      "javaScriptGzip": 304581
     },
     {
       "profile": "desktop",
       "run": 2,
-      "lcp": 60,
+      "lcp": 56,
       "cls": 0.00009858410493827159,
-      "longTaskMs": 205,
-      "interactionMs": 72,
-      "loadMs": 58.80000001192093,
-      "resources": 432598,
+      "longTaskMs": 203,
+      "interactionMs": 64,
+      "loadMs": 57.89999997615814,
+      "resources": 432656,
       "frameP95Ms": 16.700000000000728,
-      "heapBytes": 10000000,
+      "heapBytes": 10600000,
       "canvas": true,
       "gpu": {
         "sceneHost": "true",
@@ -46,22 +49,22 @@
         "gpuGeometries": "4",
         "gpuTextures": "2",
         "triangles": "4440",
-        "frameCpuMs": "0.10"
+        "frameCpuMs": "0.20"
       },
-      "javaScriptRaw": 1094350,
-      "javaScriptGzip": 304541
+      "javaScriptRaw": 1094547,
+      "javaScriptGzip": 304581
     },
     {
       "profile": "desktop",
       "run": 3,
       "lcp": 56,
       "cls": 0.00009858410493827159,
-      "longTaskMs": 203,
+      "longTaskMs": 199,
       "interactionMs": 64,
-      "loadMs": 57.099999994039536,
-      "resources": 432598,
-      "frameP95Ms": 16.700000000000728,
-      "heapBytes": 10000000,
+      "loadMs": 56.70000001788139,
+      "resources": 432656,
+      "frameP95Ms": 16.800000000000182,
+      "heapBytes": 10600000,
       "canvas": true,
       "gpu": {
         "sceneHost": "true",
@@ -70,64 +73,64 @@
         "gpuGeometries": "4",
         "gpuTextures": "2",
         "triangles": "4440",
-        "frameCpuMs": "0.10"
+        "frameCpuMs": "0.00"
       },
-      "javaScriptRaw": 1094350,
-      "javaScriptGzip": 304541
+      "javaScriptRaw": 1094547,
+      "javaScriptGzip": 304581
     },
     {
       "profile": "mobile-4x-slow4g",
       "run": 1,
-      "lcp": 632,
+      "lcp": 656,
       "cls": 0.000163181959939389,
-      "longTaskMs": 3,
+      "longTaskMs": 5,
       "interactionMs": 56,
-      "loadMs": 1677.5999999940395,
-      "resources": 284469,
+      "loadMs": 1692.7000000178814,
+      "resources": 284487,
       "frameP95Ms": 16.799999999999272,
       "heapBytes": 10000000,
       "canvas": false,
       "gpu": {
         "sceneHost": "true"
       },
-      "javaScriptRaw": 519738,
-      "javaScriptGzip": 160698
+      "javaScriptRaw": 519838,
+      "javaScriptGzip": 160702
     },
     {
       "profile": "mobile-4x-slow4g",
       "run": 2,
       "lcp": 644,
       "cls": 0.000163181959939389,
-      "longTaskMs": 4,
+      "longTaskMs": 3,
       "interactionMs": 56,
-      "loadMs": 1685.5999999940395,
-      "resources": 284469,
-      "frameP95Ms": 16.799999999999272,
+      "loadMs": 1692.7000000178814,
+      "resources": 284487,
+      "frameP95Ms": 16.700000000000728,
       "heapBytes": 10000000,
       "canvas": false,
       "gpu": {
         "sceneHost": "true"
       },
-      "javaScriptRaw": 519738,
-      "javaScriptGzip": 160698
+      "javaScriptRaw": 519838,
+      "javaScriptGzip": 160702
     },
     {
       "profile": "mobile-4x-slow4g",
       "run": 3,
-      "lcp": 644,
+      "lcp": 624,
       "cls": 0.000163181959939389,
-      "longTaskMs": 4,
+      "longTaskMs": 3,
       "interactionMs": 56,
-      "loadMs": 1687.5,
-      "resources": 284469,
-      "frameP95Ms": 16.80000000000109,
+      "loadMs": 1693.0999999940395,
+      "resources": 284487,
+      "frameP95Ms": 16.700000000000728,
       "heapBytes": 10000000,
       "canvas": false,
       "gpu": {
         "sceneHost": "true"
       },
-      "javaScriptRaw": 519738,
-      "javaScriptGzip": 160698
+      "javaScriptRaw": 519838,
+      "javaScriptGzip": 160702
     }
   ]
 }
