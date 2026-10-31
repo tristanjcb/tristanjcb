@@ -95,3 +95,10 @@ Currently, I'm focused on:
     Open to collaboration, open-source projects and interesting technical discussions.
   </sub>
 </p>
+
+---
+
+## Aurora — portfolio source
+
+The portfolio is being rebuilt with Next.js, TypeScript, SCSS Modules and FR/EN support.
+[Development guide](docs/README.md) · [Editorial content](docs/content.md) · [Vercel migration](docs/deployment.md)

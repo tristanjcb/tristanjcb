@@ -1,10 +1,9 @@
 ---
 name: Feature request
 about: Propose a new feature
-title: "[FEATURE]"
+title: '[FEATURE]'
 labels: enhancement
 assignees: ''
-
 ---
 
 **Description**

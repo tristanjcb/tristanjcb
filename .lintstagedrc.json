@@ -1,5 +1,4 @@
 {
-    "$schema": "https://json.schemastore.org/lintstagedrc.schema.json",
-    "*": "prettier --ignore-unknown --write",
-    "{src/**,__tests__/**}.{mjs,js,cjs,ts,tsx,jsx}": "pnpm eslint --config ./eslint.config.js --fix"
+  "*.{js,mjs,cjs,ts,tsx}": ["oxlint --fix", "oxfmt --write"],
+  "*.{json,md,mdx,scss,css,yml,yaml}": "oxfmt --write"
 }

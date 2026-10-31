@@ -1,45 +1,53 @@
 {
   "name": "tristan-portfolio",
+  "version": "0.0.0",
   "private": true,
   "description": "My personal portfolio & my github main page.",
-  "version": "0.0.0",
-  "type": "module",
   "repository": {
-    "url": "https://github.com/tristanjcb/tristanjcb.git",
-    "type": "git"
+    "type": "git",
+    "url": "https://github.com/tristanjcb/tristanjcb.git"
   },
+  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "prepare": "pnpm dlx husky",
-    "typecheck": "tsc -b"
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "node --experimental-strip-types scripts/sitemap.ts && next build",
+    "start": "next start --hostname 127.0.0.1",
+    "lint": "oxlint --deny-warnings",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/unit/*.test.ts",
+    "test:smoke": "playwright test",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "prepare": "husky"
   },
   "dependencies": {
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "react-router-dom": "^7.18.1"
+    "gray-matter": "^4.0.3",
+    "next": "16.4.3",
+    "next-mdx-remote": "^6.0.0",
+    "next-themes": "^0.4.6",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "rehype-pretty-code": "^0.14.1",
+    "remark-gfm": "^4.0.1",
+    "shiki": "^3.0.0",
+    "zod": "^4.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.0",
     "@commitlint/config-angular": "^21.2.0",
-    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.58.0",
     "@types/node": "^24.13.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.3",
-    "eslint": "^10.6.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.3",
-    "globals": "^17.7.0",
     "husky": "^9.1.7",
-    "typescript": "~6.0.2",
-    "typescript-eslint": "^8.62.0",
-    "vite": "^8.1.1",
-    "prettier": "^3.9.5",
     "lint-staged": "^17.0.8",
-    "sass": "^1.90.0"
+    "oxfmt": "0.75.0",
+    "oxlint": "1.90.0",
+    "sass": "^1.90.0",
+    "typescript": "~6.0.2"
   },
-  "packageManager": "pnpm@11.11.0"
+  "engines": {
+    "node": "24.x"
+  },
+  "packageManager": "pnpm@12.16.1"
 }
