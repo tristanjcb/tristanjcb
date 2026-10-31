@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
-export const alt = 'Aurora · Tristan · Code, Sound, Stories';
+export const alt = 'Tristan · Code, Sound, Stories';
 export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   return new ImageResponse(
@@ -20,7 +20,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
       <div
         style={{ display: 'flex', justifyContent: 'space-between', fontSize: 24, color: '#9188f8' }}
       >
-        <span>AURORA / TRISTAN JACOB</span>
+        <span>TRISTAN / CODE · SOUND · STORIES</span>
         <span>CODE · SOUND · STORIES</span>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', fontSize: 100, letterSpacing: -5 }}>

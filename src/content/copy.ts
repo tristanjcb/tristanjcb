@@ -12,8 +12,8 @@ export const copy = {
   },
   page: {
     aurora_tristan_s_world_of_development: text(
-      'Aurora : l’univers de Tristan, entre développement, musique sous le nom Vykev et création.',
-      'Aurora: Tristan’s world of development, music as Vykev, and creation.',
+      'Tristan : développement, musique sous le nom Vykev et création.',
+      'Tristan: development, music as Vykev, and creation.',
     ),
     code_taking_shape_sound_telling_stories: text(
       'Du code qui prend forme. Du son qui raconte. Des idées qui deviennent réelles. Bienvenue dans mon univers.',
@@ -47,8 +47,8 @@ export const copy = {
     tristan: text('Tristan,', 'Tristan,'),
     simply: text('tout simplement.', 'simply.'),
     self_taught_based_in_france_i: text(
-      'Autodidacte, en France. J’ai commencé à programmer en 2020 avec Python et des bots Discord. Aujourd’hui, Aurora réunit mes explorations du développement, de la musique et de la création.',
-      'Self-taught, based in France. I started programming in 2020 with Python and Discord bots. Today, Aurora brings together my explorations in development, music, and creation.',
+      'Autodidacte, en France. J’ai commencé à programmer en 2020 avec Python et des bots Discord. Aujourd’hui, je réunis mes explorations du développement, de la musique et de la création.',
+      'Self-taught, based in France. I started programming in 2020 with Python and Discord bots. Today, I bring together my explorations in development, music, and creation.',
     ),
     behind_the_screen: text('Derrière l’écran', 'Behind the screen'),
   },
@@ -72,8 +72,8 @@ export const copy = {
   },
   projects: {
     development_music_and_creation_the_projects: text(
-      'Développement, musique et création : les projets d’Aurora.',
-      'Development, music, and creation: the projects of Aurora.',
+      'Développement, musique et création : les projets de Tristan.',
+      'Development, music, and creation: the projects of Tristan.',
     ),
     ideas: text('Des idées.', 'Ideas.'),
     taking_shape: text('Des formes.', 'Taking shape.'),
@@ -84,8 +84,8 @@ export const copy = {
   },
   blog: {
     notes_process_and_discoveries_the_aurora: text(
-      'Notes, processus et découvertes : le journal d’Aurora.',
-      'Notes, process, and discoveries: the Aurora journal.',
+      'Notes, processus et découvertes : le journal de Tristan.',
+      'Notes, process, and discoveries: Tristan’s journal.',
     ),
     what_i_learn_what_i_try: text(
       'Ce que j’apprends, ce que j’essaie, ce qui reste. Un espace pour documenter le chemin.',
@@ -117,8 +117,8 @@ export const copy = {
     always: text('Toujours', 'Always'),
     exploring: text('en exploration.', 'exploring.'),
     three_disciplines_the_same_curiosity_aurora: text(
-      'Trois disciplines, une même curiosité. Aurora est l’espace où je les fais se rencontrer.',
-      'Three disciplines, the same curiosity. Aurora is where I bring them together.',
+      'Trois disciplines, une même curiosité. Cet espace est le point de rencontre.',
+      'Three disciplines, the same curiosity. This is where I bring them together.',
     ),
     from_a_first_script: text('Du premier script…', 'From a first script…'),
     i_m_tristan_jacob_a_self: text(
@@ -130,8 +130,8 @@ export const copy = {
       '…to more ways of expressing.',
     ),
     development_is_a_starting_point_not: text(
-      'Le développement est un point de départ, pas une frontière. La musique, sous le nom Vykev, et la création de contenu ouvrent d’autres chemins. Aurora rassemble ces explorations sans chercher à les enfermer dans une seule étiquette.',
-      'Development is a starting point, not a boundary. Music, under the name Vykev, and content creation open other paths. Aurora brings these explorations together without trying to fit them under a single label.',
+      'Le développement est un point de départ, pas une frontière. La musique, sous le nom Vykev, et la création de contenu ouvrent d’autres chemins. Je rassemble ces explorations sans chercher à les enfermer dans une seule étiquette.',
+      'Development is a starting point, not a boundary. Music, under the name Vykev, and content creation open other paths. I bring these explorations together without trying to fit them under a single label.',
     ),
     learning_by_building: text('Apprendre en construisant', 'Learning by building'),
     i_work_with_typescript_node_js: text(
@@ -157,8 +157,8 @@ export const copy = {
   },
   projects_category: {
     one_discipline_another_view_of_aurora: text(
-      'Une discipline, un autre regard sur les projets d’Aurora.',
-      'One discipline, another view of Aurora’s projects.',
+      'Une discipline, un autre regard sur les projets de Tristan.',
+      'One discipline, another view of Tristan’s projects.',
     ),
     two_chapters_the_first_has_a: text(
       'Deux chapitres. Le premier porte un nom, le second garde son mystère. La musique de Vykev se dévoilera ici.',

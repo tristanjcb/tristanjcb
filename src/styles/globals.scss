@@ -126,7 +126,7 @@ h3 {
 .eyebrow,
 .mono {
   font:
-    11px/1.6 var(--font-mono),
+    13px/1.6 var(--font-mono),
     monospace;
   letter-spacing: 0.09em;
 }
@@ -195,7 +195,7 @@ h3 {
 }
 .wordmark sup {
   font:
-    10px var(--font-mono),
+    12px var(--font-mono),
     monospace;
   vertical-align: top;
   margin-left: 4px;
@@ -203,7 +203,7 @@ h3 {
 .desktop-nav {
   display: flex;
   gap: 32px;
-  font-size: 12px;
+  font-size: 14px;
 }
 .desktop-nav a {
   padding-block: 10px;
@@ -216,7 +216,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 16px;
-  font-size: 12px;
+  font-size: 14px;
 }
 .header-actions button {
   display: flex;
@@ -236,11 +236,11 @@ kbd {
   border: 1px solid var(--border);
   border-radius: 4px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 .language {
   font:
-    11px var(--font-mono),
+    13px var(--font-mono),
     monospace;
 }
 .button {
@@ -252,7 +252,7 @@ kbd {
   padding: 16px 22px;
   background: var(--text);
   color: var(--bg);
-  font-size: 13px;
+  font-size: 15px;
   border: 1px solid var(--text);
   border-radius: var(--radius);
   transition: transform var(--duration) var(--ease);
@@ -266,7 +266,7 @@ kbd {
   align-items: center;
   gap: 25px;
   min-height: 44px;
-  font-size: 13px;
+  font-size: 15px;
   border-bottom: 1px solid var(--border);
   padding-block: 8px;
 }
@@ -281,7 +281,7 @@ kbd {
   padding-block: 30px;
 }
 .hero .eyebrow {
-  font-size: 10px;
+  font-size: 12px;
 }
 .status-dot {
   display: inline-block;
@@ -295,7 +295,7 @@ kbd {
   color: var(--muted);
   max-width: 390px;
   margin: 30px 0;
-  font-size: 15px;
+  font-size: 17px;
 }
 .hero-index {
   margin-top: 60px;
@@ -303,7 +303,7 @@ kbd {
   gap: 18px;
   flex-wrap: wrap;
   font:
-    9px var(--font-mono),
+    12px var(--font-mono),
     monospace;
   color: var(--muted);
 }
@@ -314,7 +314,7 @@ kbd {
   display: flex;
   justify-content: space-between;
   font:
-    9px var(--font-mono),
+    12px var(--font-mono),
     monospace;
   color: var(--muted);
 }
@@ -330,7 +330,7 @@ kbd {
   padding-top: 20px;
   margin-bottom: 64px;
   font:
-    10px var(--font-mono),
+    12px var(--font-mono),
     monospace;
   letter-spacing: 0.1em;
   color: var(--accent);
@@ -346,7 +346,7 @@ kbd {
 }
 .universe p:not(.eyebrow, .mono) {
   color: var(--muted);
-  font-size: 15px;
+  font-size: 17px;
   max-width: 440px;
   margin-block: 24px;
 }
@@ -397,7 +397,7 @@ kbd {
   position: absolute;
   bottom: 0;
   font:
-    9px var(--font-mono),
+    12px var(--font-mono),
     monospace;
   color: var(--muted);
   letter-spacing: 0.15em;
@@ -440,11 +440,11 @@ kbd {
 }
 .project-caption .eyebrow {
   margin-bottom: 10px;
-  font-size: 9px;
+  font-size: 12px;
 }
 .project-caption p:not(.eyebrow) {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   margin-top: 8px;
 }
 .arrow-link {
@@ -467,7 +467,7 @@ kbd {
   border: 1px solid var(--border);
   border-radius: 30px;
   font:
-    10px var(--font-mono),
+    12px var(--font-mono),
     monospace;
   background: var(--bg);
 }
@@ -499,7 +499,7 @@ kbd {
   bottom: 25px;
   left: 25px;
   font:
-    10px/1.8 var(--font-mono),
+    12px/1.8 var(--font-mono),
     monospace;
   color: var(--muted);
 }
@@ -507,7 +507,7 @@ kbd {
   color: var(--muted);
   margin-block: 28px;
   max-width: 430px;
-  font-size: 15px;
+  font-size: 17px;
 }
 .empty-state {
   border: 1px solid var(--border);
@@ -522,7 +522,7 @@ kbd {
 }
 .empty-state p {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
   margin-top: 12px;
   max-width: 580px;
 }
@@ -590,13 +590,13 @@ kbd {
   padding: 30px 0;
 }
 .footer-bottom p {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
 }
 .footer-bottom > div {
   display: flex;
   gap: 25px;
-  font-size: 11px;
+  font-size: 13px;
 }
 .colophon {
   border-top: 1px solid var(--border);
@@ -604,7 +604,7 @@ kbd {
   display: flex;
   justify-content: space-between;
   font:
-    8px var(--font-mono),
+    11px var(--font-mono),
     monospace;
   letter-spacing: 0.1em;
   color: var(--muted);
@@ -640,7 +640,7 @@ dialog::backdrop {
 .dialog-top button {
   min-height: 44px;
   font:
-    12px var(--font-mono),
+    14px var(--font-mono),
     monospace;
 }
 .menu-split {
@@ -662,7 +662,7 @@ dialog::backdrop {
 }
 .menu-split small {
   font:
-    10px var(--font-mono),
+    12px var(--font-mono),
     monospace;
   color: var(--muted);
 }
@@ -685,13 +685,13 @@ dialog::backdrop {
 .menu-split aside > a {
   display: block;
   margin-top: 24px;
-  font-size: 13px;
+  font-size: 15px;
 }
 .preferences {
   display: flex;
   gap: 25px;
   align-items: center;
-  font-size: 12px;
+  font-size: 14px;
   flex-wrap: wrap;
 }
 .preferences label {
@@ -736,7 +736,7 @@ dialog::backdrop {
 }
 .search-results small {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   margin-top: 7px;
 }
@@ -768,7 +768,7 @@ dialog::backdrop {
   border: 1px solid var(--border);
   padding: 12px 20px;
   border-radius: 30px;
-  font-size: 12px;
+  font-size: 14px;
   min-height: 44px;
 }
 .filter[aria-current],
@@ -844,7 +844,7 @@ dialog::backdrop {
   overflow: auto;
   border: 1px solid var(--border);
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.8;
   background: var(--surface) !important;
 }
@@ -876,7 +876,7 @@ dialog::backdrop {
 }
 .toc a {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.7;
   padding: 8px 0;
   color: var(--muted);
@@ -901,7 +901,7 @@ dialog::backdrop {
   flex-wrap: wrap;
 }
 .social-list a {
-  font-size: 13px;
+  font-size: 15px;
   border-bottom: 1px solid var(--border);
   padding: 12px 0;
 }
@@ -912,7 +912,7 @@ dialog::backdrop {
 }
 .contact-form label {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   margin-bottom: 20px;
 }
 .contact-form input,
@@ -947,14 +947,14 @@ dialog::backdrop {
   margin-block: 12px;
 }
 .timeline p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--muted);
 }
 .breadcrumb {
   display: inline-flex;
   gap: 15px;
   font:
-    11px var(--font-mono),
+    13px var(--font-mono),
     monospace;
   color: var(--muted);
   min-height: 44px;
@@ -995,7 +995,7 @@ dialog::backdrop {
   }
   .hero-index {
     gap: 12px;
-    font-size: 8px;
+    font-size: 11px;
   }
   .desktop-nav {
     gap: 20px;
@@ -1046,10 +1046,10 @@ dialog::backdrop {
   }
   .hero-index {
     margin-top: 35px;
-    font-size: 8px;
+    font-size: 11px;
   }
   .hero-baseline {
-    font-size: 8px;
+    font-size: 11px;
     gap: 15px;
   }
   .hero-baseline > span {
@@ -1124,7 +1124,7 @@ dialog::backdrop {
     width: 100%;
   }
   .colophon {
-    font-size: 7px;
+    font-size: 11px;
   }
   .menu-dialog {
     width: calc(100% - 24px);
@@ -1196,14 +1196,15 @@ dialog::backdrop {
   *,
   *::before,
   *::after {
-    animation: none !important;
-    transition: none !important;
+    animation-duration: 120ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 120ms !important;
   }
 }
 .journal-search {
   display: block;
   margin-bottom: 30px;
-  font-size: 13px;
+  font-size: 15px;
 }
 .journal-search input {
   display: block;
@@ -1224,5 +1225,188 @@ dialog::backdrop {
   gap: 20px;
   width: min(1240px, calc(100% - 40px));
   margin: 25px auto;
-  font-size: 13px;
+  font-size: 15px;
+}
+/* Readability and shared icon rhythm. */
+body {
+  font-size: 17px;
+  font-weight: 450;
+}
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+p {
+  line-height: 1.85;
+}
+.eyebrow,
+.mono {
+  font-weight: 500;
+}
+.icon {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+  vertical-align: -0.18em;
+}
+.wordmark {
+  font-size: 32px;
+  font-weight: 700;
+}
+.desktop-nav {
+  gap: 26px;
+  font-size: 15px;
+  font-weight: 550;
+}
+.header-actions {
+  font-size: 14px;
+  font-weight: 550;
+}
+.header-actions .icon {
+  width: 21px;
+  height: 21px;
+}
+.text-link,
+.button,
+.filter {
+  font-weight: 550;
+}
+.text-link {
+  gap: 12px;
+}
+.text-link .icon,
+.button .icon {
+  width: 18px;
+  height: 18px;
+}
+.round-link .icon {
+  width: 32px;
+  height: 32px;
+}
+.menu-split nav a {
+  font-weight: 550;
+}
+.menu-split nav a > .icon {
+  margin-left: auto;
+  width: 22px;
+  height: 22px;
+}
+.search-results .icon {
+  width: 18px;
+  height: 18px;
+}
+.dialog-top button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.contact-form label {
+  font-size: 15px;
+  font-weight: 550;
+}
+.contact-form small {
+  font-size: 14px;
+}
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 14px;
+  font-weight: 550;
+}
+.social-link .icon {
+  width: 21px;
+  height: 21px;
+}
+.social-link:hover {
+  background: var(--surface-raised);
+  border-color: var(--accent);
+}
+.footer-bottom {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+}
+.footer-bottom > p {
+  justify-self: end;
+  font-size: 14px;
+}
+.footer-bottom > .social-links {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+.contact-email {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.contact-email .icon {
+  width: 28px;
+  height: 28px;
+}
+@media (max-width: 1100px) {
+  .desktop-nav {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  .wordmark {
+    font-size: 28px;
+  }
+  .hero-index {
+    gap: 12px;
+  }
+  .social-links {
+    gap: 10px;
+  }
+  .social-link {
+    font-size: 13px;
+    padding: 12px;
+    gap: 10px;
+  }
+  .footer-bottom > .social-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .footer-bottom > p {
+    font-size: 13px;
+  }
+  .footer-bottom > .wordmark {
+    font-size: 29px;
+  }
+  .contact-email {
+    font-size: clamp(22px, 5.3vw, 30px);
+  }
+}
+.colophon {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.social-link span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 380px) {
+  .header-actions .menu-label {
+    display: none;
+  }
+}
+@media (min-width: 1001px) {
+  .footer-bottom > .social-links {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
 }

@@ -1,7 +1,9 @@
+import { SocialLinks } from '@/components/SocialLinks';
+import { Icon } from '@/components/icons/Icon';
 import { copy } from '@/content/copy';
 import { notFound } from 'next/navigation';
 import { isLocale, ui } from '@/lib/i18n';
-import { email, socials } from '@/content/socials';
+import { email } from '@/content/socials';
 import { metadata } from '@/lib/seo';
 import { ContactForm } from '@/components/ContactForm';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -32,16 +34,10 @@ export default async function Contact({ params }: { params: Promise<{ locale: st
         <div>
           <p>{ui.ctaBody[locale]}</p>
           <a className="contact-email" href={`mailto:${email}`}>
-            {email} ↗
+            <Icon name="mail" /> {email}
           </a>
           <p className="eyebrow">{copy.contact.elsewhere_on_the_web[locale]}</p>
-          <div className="social-list">
-            {socials.map((social) => (
-              <a key={social.href} href={social.href} rel="me">
-                {social.label} ↗
-              </a>
-            ))}
-          </div>
+          <SocialLinks locale={locale} />
         </div>
         <ContactForm locale={locale} />
       </div>

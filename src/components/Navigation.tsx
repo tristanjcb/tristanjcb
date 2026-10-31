@@ -1,8 +1,11 @@
 'use client';
+import { Icon } from '@/components/icons/Icon';
+
 import Link from 'next/link';
 import styles from './Navigation.module.scss';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
+import { animateTheme } from '@/lib/theme-transition';
 import { useEffect, useRef, useState } from 'react';
 import { navigation, ui, type Locale } from '@/lib/i18n';
 export type SearchItem = { label: string; detail: string; href: string };
@@ -90,7 +93,10 @@ export function Navigation({
           close();
         }}
       >
-        {otherLocale.toUpperCase()} <span aria-hidden="true">↗</span>
+        {otherLocale.toUpperCase()}{' '}
+        <span aria-hidden="true">
+          <Icon name="chevron-right" />
+        </span>
       </Link>
       <label>
         {ui.theme[locale]}
@@ -98,7 +104,7 @@ export function Navigation({
           aria-label={ui.theme[locale]}
           value={theme}
           onChange={(event) => {
-            setTheme(event.target.value);
+            animateTheme(event.target.value, setTheme, event.currentTarget);
             setSelectedTheme(event.target.value);
           }}
         >
@@ -114,14 +120,18 @@ export function Navigation({
   return (
     <>
       <header className={styles.header}>
-        <Link href={`/${locale}`} className="wordmark" aria-label="Aurora — Tristan">
-          a<span>urora</span>
+        <Link
+          href={`/${locale}`}
+          className="wordmark"
+          aria-label={locale === 'fr' ? 'Tristan — accueil' : 'Tristan — home'}
+        >
+          Tristan<span className="accent">.</span>
         </Link>
         <nav
           aria-label={locale === 'fr' ? 'Navigation principale' : 'Main navigation'}
           className="desktop-nav"
         >
-          {navigation.slice(1, 4).map((item) => (
+          {navigation.slice(1, 5).map((item) => (
             <Link
               key={item.key}
               href={`/${locale}${item.path}`}
@@ -147,11 +157,16 @@ export function Navigation({
             onClick={() => open('search')}
             aria-label={`${ui.search[locale]} (Ctrl+K / ⌘K)`}
           >
-            <span aria-hidden="true">⌕</span>
+            <Icon name="search" />
             <kbd>⌘ K</kbd>
           </button>
-          <button ref={menuButton} onClick={() => open('menu')} aria-haspopup="dialog">
-            {ui.menu[locale]} <span aria-hidden="true">≡</span>
+          <button
+            ref={menuButton}
+            onClick={() => open('menu')}
+            aria-haspopup="dialog"
+            aria-label={ui.menu[locale]}
+          >
+            <span className="menu-label">{ui.menu[locale]}</span> <Icon name="menu" />
           </button>
         </div>
       </header>
@@ -166,9 +181,11 @@ export function Navigation({
       >
         <div className="dialog-top">
           <span id="menu-title" className="eyebrow">
-            AURORA / {ui.menu[locale]}
+            TRISTAN / {ui.menu[locale]}
           </span>
-          <button onClick={close}>{ui.close[locale]} ×</button>
+          <button onClick={close}>
+            {ui.close[locale]} <Icon name="close" />
+          </button>
         </div>
         <div className="menu-split">
           <nav aria-label={ui.menu[locale]}>
@@ -176,7 +193,9 @@ export function Navigation({
               <Link href={`/${locale}${item.path}`} key={item.key} onClick={close}>
                 <small>0{index + 1}</small>
                 {ui[item.key][locale]}
-                <span aria-hidden="true">↗</span>
+                <span aria-hidden="true">
+                  <Icon name="chevron-right" />
+                </span>
               </Link>
             ))}
           </nav>
@@ -190,7 +209,9 @@ export function Navigation({
               Stories.
             </p>
             {controls}
-            <a href="mailto:tristan@kresov.com">tristan@kresov.com ↗</a>
+            <a href="mailto:tristan@kresov.com">
+              <Icon name="mail" /> tristan@kresov.com
+            </a>
           </aside>
         </div>
       </dialog>
@@ -208,7 +229,7 @@ export function Navigation({
             {ui.search[locale]}
           </label>
           <button onClick={close} aria-label={ui.close[locale]}>
-            Esc ×
+            Esc <Icon name="close" />
           </button>
         </div>
         <input
@@ -256,7 +277,9 @@ export function Navigation({
                   {item.label}
                   <small>{item.detail}</small>
                 </span>
-                <span aria-hidden="true">↗</span>
+                <span aria-hidden="true">
+                  <Icon name="chevron-right" />
+                </span>
               </Link>
             </li>
           ))}

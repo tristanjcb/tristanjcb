@@ -25,11 +25,11 @@ test('all generated positions are finite and stay within the scene envelope', ()
 });
 test('mobile and modest devices have a bounded GPU tier', () => {
   for (const tier of [quality(390, 12), quality(1440, 2)]) {
-    assert.equal(tier.dpr, 1);
+    assert.equal(tier.dpr, 2);
     assert.ok(tier.particles <= 80);
-    assert.ok(tier.fps <= 24);
+    assert.ok(tier.fps <= 30);
   }
-  assert.ok(quality(1440, 12).dpr <= 1.5);
+  assert.ok(quality(1440, 12).dpr <= 2);
 });
 test('organic surfaces stay closed at their poles and periodic seam', () => {
   for (const chapter of chapters) {

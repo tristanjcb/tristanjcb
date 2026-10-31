@@ -1,7 +1,8 @@
+import { Icon } from '@/components/icons/Icon';
 import Link from 'next/link';
 import styles from './Footer.module.scss';
 import { ui, type Locale } from '@/lib/i18n';
-import { email, socials } from '@/content/socials';
+import { SocialLinks } from './SocialLinks';
 export function Footer({ locale }: { locale: Locale }) {
   return (
     <footer className={styles.footer}>
@@ -10,24 +11,15 @@ export function Footer({ locale }: { locale: Locale }) {
         <div className="signature-row">
           <h2>{ui.cta[locale]}</h2>
           <Link className="round-link" href={`/${locale}/contact`} aria-label={ui.contact[locale]}>
-            ↗
+            <Icon name="message" />
           </Link>
         </div>
         <div className="footer-bottom">
           <Link className="wordmark" href={`/${locale}`}>
-            aurora<span className="accent">.</span>
+            Tristan<span className="accent">.</span>
           </Link>
-          <p>
-            © {new Intl.DateTimeFormat('en', { year: 'numeric' }).format(Date.now())} Tristan Jacob
-          </p>
-          <div>
-            {socials.slice(0, 2).map((social) => (
-              <a key={social.label} href={social.href} rel="me">
-                {social.label} ↗
-              </a>
-            ))}
-            <a href={`mailto:${email}`}>Email ↗</a>
-          </div>
+          <p>© {new Intl.DateTimeFormat('en', { year: 'numeric' }).format(Date.now())} Tristan</p>
+          <SocialLinks locale={locale} />
         </div>
         <p className="colophon">
           CODE · SOUND · STORIES <span>BUILT WITH INTENTION.</span>

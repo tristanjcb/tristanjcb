@@ -1,3 +1,4 @@
+import { Icon } from '@/components/icons/Icon';
 import { copy } from '@/content/copy';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -33,7 +34,7 @@ export default async function Sponsors({ params }: { params: Promise<{ locale: s
         <div className="prose">
           <p>{copy.sponsors.no_partnerships_are_announced_here_at[locale]}</p>
           <Link className="text-link" href={`/${locale}/contact`}>
-            {ui.contact[locale]} ↗
+            {ui.contact[locale]} <Icon name="chevron-right" />
           </Link>
         </div>
       </section>

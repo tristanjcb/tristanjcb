@@ -23,7 +23,7 @@ export const ui = {
   me: text('À propos', 'Behind the screen'),
   projects: text('Projets', 'Selected work'),
   blog: text('Journal', 'Journal'),
-  sponsors: text('Soutenir', 'Sponsors'),
+  sponsors: text('Sponsors', 'Sponsors'),
   contact: text('Contact', 'Contact'),
   skip: text('Aller au contenu', 'Skip to content'),
   menu: text('Menu', 'Menu'),

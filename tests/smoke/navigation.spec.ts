@@ -35,7 +35,7 @@ for (const locale of ['fr', 'en']) {
 test('menu, keyboard search, theme persistence and locale', async ({ page }) => {
   await page.goto('/fr');
   await page.getByRole('button', { name: 'Menu' }).click();
-  const menu = page.getByRole('dialog', { name: 'AURORA / Menu' });
+  const menu = page.getByRole('dialog', { name: 'TRISTAN / Menu' });
   await expect(menu).toBeVisible();
   await menu.getByLabel('Thème', { exact: true }).selectOption('dark');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');

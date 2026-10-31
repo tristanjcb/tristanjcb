@@ -1,3 +1,4 @@
+import { Icon } from '@/components/icons/Icon';
 export const dynamicParams = false;
 import { copy } from '@/content/copy';
 import Link from 'next/link';
@@ -39,10 +40,10 @@ export default async function Category({
     <div className="container page-content">
       <div className="page-intro">
         <Link className="breadcrumb" href={`/${locale}/projects`}>
-          ← {ui.back[locale]}
+          <Icon name="chevron-left" /> {ui.back[locale]}
         </Link>
         <p className="eyebrow">
-          {item.number} / {category === 'music' ? 'VYKEV' : 'AURORA'}
+          {item.number} / {category === 'music' ? 'VYKEV' : 'TRISTAN'}
         </p>
         <h1>
           {item.title[locale]}

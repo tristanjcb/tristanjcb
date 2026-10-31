@@ -13,10 +13,15 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .enter {
-    animation: none;
+    animation: fade-only 140ms ease both;
   }
 }
 
-:global([data-motion='off']) .enter {
-  animation: none;
+@keyframes fade-only {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
 }

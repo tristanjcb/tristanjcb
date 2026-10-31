@@ -1,3 +1,4 @@
+import { Icon } from '@/components/icons/Icon';
 export const dynamicParams = false;
 import { copy } from '@/content/copy';
 import Link from 'next/link';
@@ -64,7 +65,7 @@ export default async function Article({ params }: { params: Promise<Params> }) {
     <article className="container page-content">
       <div className="page-intro">
         <Link className="breadcrumb" href={`/${locale}/blog`}>
-          ← Journal
+          <Icon name="chevron-left" /> Journal
         </Link>
         <p className="eyebrow">
           <time dateTime={article.date}>
@@ -108,7 +109,7 @@ export default async function Article({ params }: { params: Promise<Params> }) {
         style={{ marginTop: 60 }}
         href={`mailto:?subject=${encodeURIComponent(article.title)}&body=${encodeURIComponent(`${origin}/${locale}/blog/${slug}`)}`}
       >
-        {copy.blog_slug.share_this_article[locale]} ↗
+        {copy.blog_slug.share_this_article[locale]} <Icon name="chevron-right" />
       </a>
     </article>
   );

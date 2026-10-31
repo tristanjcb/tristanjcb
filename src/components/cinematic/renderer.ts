@@ -4,6 +4,7 @@ export type Engine = {
   ready: Promise<void>;
   setActive: (value: boolean) => void;
   dispose: () => void;
+  update: () => void;
 };
 export function createAurora(
   host: HTMLElement,
@@ -13,9 +14,9 @@ export function createAurora(
   const tier = quality(window.innerWidth, navigator.hardwareConcurrency || 4);
   const renderer = new THREE.WebGLRenderer({
     alpha: true,
-    antialias: !tier.modest,
-    powerPreference: 'low-power',
-    failIfMajorPerformanceCaveat: true,
+    antialias: true,
+    powerPreference: 'default',
+    failIfMajorPerformanceCaveat: false,
   });
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, tier.dpr));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -126,20 +127,26 @@ export function createAurora(
   const targetColor = new THREE.Color();
   let frame = 0,
     active = false,
+    visible = false,
+    prepared = false,
     disposed = false,
     previous = 0,
     elapsed = 0,
     lastStats = 0,
+    submitted = 0,
     slow = 0;
   let fps = tier.fps;
   let downgraded = false;
   const resize = () => {
     const { width, height } = host.getBoundingClientRect();
     if (!width || !height) return;
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, tier.dpr));
     renderer.setSize(width, height);
     camera.aspect = width / height;
     camera.position.z = camera.aspect < 0.8 ? 7.6 : 6;
     camera.updateProjectionMatrix();
+    host.dataset.dpr = String(renderer.getPixelRatio());
+    if (prepared) update();
   };
   const observer = new ResizeObserver(resize);
   observer.observe(host);
@@ -158,15 +165,18 @@ export function createAurora(
   function draw(now: number) {
     if (disposed || !active) return;
     frame = requestAnimationFrame(draw);
-    if (now - previous < 1000 / fps) return;
+    if (now - previous < 1000 / fps - 0.6) return;
+    renderFrame(now, false);
+  }
+  function renderFrame(now: number, still: boolean) {
     const delta = Math.min((now - previous) / 1000, 0.06);
     previous = now;
-    elapsed += delta;
+    if (!still) elapsed += delta;
     const start = performance.now();
     const current = state.current;
     const settings = sceneSettings(current.energy, current.density, current.palette);
     const chapter = chapters.indexOf(current.chapter);
-    const blend = 1 - Math.exp(-delta * 3);
+    const blend = still ? 1 : 1 - Math.exp(-delta * 3);
     for (let i = 0; i < 4; i++)
       mesh.morphTargetInfluences![i] +=
         ((chapter === i + 1 ? 1 : 0) - mesh.morphTargetInfluences![i]) * blend;
@@ -184,10 +194,10 @@ export function createAurora(
     color.copy(material.color).lerp(targetColor, blend);
     material.color.copy(color);
     const speed = 0.035 + settings.energy * 0.13;
-    mesh.rotation.y = elapsed * speed + current.pointer.x * 0.13;
-    mesh.rotation.x = Math.sin(elapsed * 0.18) * 0.12 + current.pointer.y * 0.08;
-    mesh.rotation.z = Math.sin(elapsed * 0.12) * 0.09;
-    mesh.scale.setScalar(1 + Math.sin(elapsed * (0.4 + settings.energy)) * 0.035);
+    mesh.rotation.y = still ? 0.35 : elapsed * speed + current.pointer.x * 0.13;
+    mesh.rotation.x = still ? -0.08 : Math.sin(elapsed * 0.18) * 0.12 + current.pointer.y * 0.08;
+    mesh.rotation.z = still ? 0.04 : Math.sin(elapsed * 0.12) * 0.09;
+    mesh.scale.setScalar(still ? 1 : 1 + Math.sin(elapsed * (0.4 + settings.energy)) * 0.035);
     material.opacity += ((chapter === 4 ? 0.12 : 1) - material.opacity) * blend;
     dots.rotation.y = -elapsed * speed * 0.35;
     dots.rotation.z = Math.sin(elapsed * 0.1) * 0.1;
@@ -207,6 +217,7 @@ export function createAurora(
     renderer.toneMappingExposure = current.dark ? 1.4 : 1.1;
     try {
       renderer.render(scene, camera);
+      host.dataset.frames = String(++submitted);
     } catch {
       stop();
       onFailure();
@@ -218,11 +229,11 @@ export function createAurora(
     if (slow > 30 && !downgraded) {
       downgraded = true;
       fps = 24;
-      renderer.setPixelRatio(1);
+      // Preserve sharpness: reduce temporal complexity, never resolution.
       dotsGeometry.setDrawRange(0, Math.min(60, Math.round(settings.density * tier.particles)));
       host.dataset.quality = 'reduced';
     }
-    if (now - lastStats > 1000) {
+    if (still || now - lastStats > 1000) {
       host.dataset.drawCalls = String(renderer.info.render.calls);
       host.dataset.gpuGeometries = String(renderer.info.memory.geometries);
       host.dataset.gpuTextures = String(renderer.info.memory.textures);
@@ -231,18 +242,36 @@ export function createAurora(
       lastStats = now;
     }
   }
+  function update() {
+    if (disposed || !prepared) return;
+    if (!visible) {
+      stop();
+      return;
+    }
+    if (state.current.motion) {
+      if (!active) {
+        active = true;
+        previous = performance.now();
+        host.dataset.rendering = 'active';
+        frame = requestAnimationFrame(draw);
+      }
+    } else {
+      stop();
+      renderFrame(performance.now(), true);
+      host.dataset.rendering = 'static';
+    }
+  }
   const setActive = (value: boolean) => {
-    if (disposed) return;
-    if (value && !active) {
-      active = true;
-      previous = performance.now();
-      host.dataset.rendering = 'active';
-      frame = requestAnimationFrame(draw);
-    } else if (!value) stop();
+    visible = value;
+    update();
   };
   return {
-    ready: renderer.compileAsync(scene, camera).then(() => {}),
+    ready: renderer.compileAsync(scene, camera).then(() => {
+      prepared = true;
+      update();
+    }),
     setActive,
+    update,
     dispose() {
       if (disposed) return;
       disposed = true;

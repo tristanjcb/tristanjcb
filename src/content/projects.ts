@@ -87,8 +87,8 @@ export const projects: Project[] = [
     subtitle: text('Un espace pour les prochaines idées.', 'A space for the next ideas.'),
     status: text('Bientôt', 'Coming soon'),
     description: text(
-      'La création de contenu a sa place dans Aurora. Cet espace attend les premiers formats à partager.',
-      'Content creation has a place in Aurora. This space is waiting for its first formats to share.',
+      'La création de contenu a aussi sa place ici. Cet espace attend les premiers formats à partager.',
+      'Content creation has a place here too. This space is waiting for its first formats to share.',
     ),
     teaser: true,
   },

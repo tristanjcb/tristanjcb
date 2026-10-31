@@ -76,23 +76,93 @@
     transform: none;
   }
 }
-[data-motion='off'] *,
-[data-motion='off'] *::before,
-[data-motion='off'] *::after {
-  animation: none !important;
-  transition: none !important;
-  scroll-behavior: auto !important;
-}
-[data-motion='off'] [data-reveal] {
-  opacity: 1 !important;
-  transform: none !important;
-}
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {
-    opacity: 1 !important;
     transform: none !important;
   }
 }
-html[data-motion='off'] {
-  scroll-behavior: auto !important;
+::view-transition-old(root) {
+  animation: none;
+}
+::view-transition-new(root) {
+  animation: theme-fade 420ms ease both;
+}
+@keyframes theme-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+html[data-theme-transition='true'] body,
+html[data-theme-transition='true'] header,
+html[data-theme-transition='true'] footer,
+html[data-theme-transition='true'] dialog,
+html[data-theme-transition='true'] input,
+html[data-theme-transition='true'] textarea,
+html[data-theme-transition='true'] select {
+  transition:
+    background-color 480ms ease,
+    color 480ms ease,
+    border-color 480ms ease,
+    box-shadow 480ms ease;
+}
+a {
+  transition: color 180ms ease;
+}
+.text-link .icon,
+.button .icon {
+  transition: transform 220ms var(--ease);
+}
+.text-link:hover .icon,
+.button:hover .icon {
+  transform: translateX(3px);
+}
+input,
+textarea,
+select {
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 300ms ease;
+}
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.social-link {
+  transition:
+    transform 200ms var(--ease),
+    background-color 250ms ease,
+    border-color 200ms ease;
+}
+.social-link:hover {
+  transform: translateY(-3px);
+}
+.social-link .icon {
+  transition: transform 220ms var(--ease);
+}
+.social-link:hover .icon {
+  transform: scale(1.09);
+}
+.menu-split nav a {
+  transition:
+    color 180ms ease,
+    padding-inline 250ms var(--ease);
+}
+.menu-split nav a:hover {
+  padding-left: 10px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .social-link:hover,
+  .social-link:hover .icon,
+  .text-link:hover .icon,
+  .button:hover .icon {
+    transform: none;
+  }
+}
+::view-transition {
+  pointer-events: none;
 }

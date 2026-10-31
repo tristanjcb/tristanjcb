@@ -9,8 +9,3 @@
     radial-gradient(ellipse at 80% 20%, #74ddea22, transparent 60%), var(--bg);
   transform: translateY(100%);
 }
-@media (prefers-reduced-motion: reduce) {
-  .curtain {
-    display: none;
-  }
-}

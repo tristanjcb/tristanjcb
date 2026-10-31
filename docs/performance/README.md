@@ -2,7 +2,17 @@
 
 Mesures du **31 octobre 2026**, sur le même poste, build Next.js de production. Trois contextes Chromium froids par profil pour la référence et la version complète. Desktop : 1440 × 1000, DPR 1. Mobile simulé : 390 × 844, CPU ×4, RTT 100 ms, téléchargement 200 000 octets/s. Une mesure intermédiaire par profil est conservée dans `hero.json` ; ce relevé unique est indicatif.
 
-## Résultats de laboratoire
+## Révision : 3D systématique et haute définition
+
+Le relevé `revision.json` remplace la politique mobile décrite historiquement ci-dessous. Trois essais froids par profil : desktop LCP médian **56 ms**, JS gzip **309 990 octets**, tâches longues **203 ms** ; mobile simulé LCP **776 ms**, JS gzip **304 122 octets**, tâches longues **290 ms**. CLS médian : 0,00033 / 0,00025. Interaction échantillonnée : 72 / 56 ms. 6 draw calls, 7 432 / 4 968 triangles.
+
+Le mobile charge désormais environ **143 ko gzip supplémentaires** par rapport à l'ancien fallback automatique, avec environ **286 ms** de tâches longues supplémentaires et **132 ms** de LCP médian supplémentaire. C'est le coût mesuré du choix demandé de conserver la 3D. Les images fixes conservent aussi ce chargement initial, puis arrêtent la boucle de rendu.
+
+Budgets actuels : JS gzip ≤335 000 octets sur les deux profils ; LCP ≤2,5 s et écart ≤250 ms par rapport à la fondation ; CLS ≤0,02 ; interaction laboratoire ≤100 ms ; tâches longues ≤250 ms desktop / 400 ms mobile ; RAF P95 ≤50 ms ; ≤8 draw calls et ≤8 000 triangles. Antialiasing actif, DPR natif plafonné à 2 sans dégradation automatique de résolution. Le benchmark reste à DPR 1 pour comparer les anciens relevés ; les tests navigateur vérifient séparément le framebuffer Retina.
+
+`pnpm perf:check` vérifie maintenant `revision.json`. Les tableaux ci-dessous documentent **l'ancienne version**, conservés pour comparaison ; leurs choix de fallback mobile et de DPR ne s'appliquent plus.
+
+## Résultats historiques de laboratoire
 
 | Profil        | Version                           | LCP médian | CLS médian | JS gzip chargé | Échantillon interaction | Tâches longues cumulées |
 | ------------- | --------------------------------- | ---------: | ---------: | -------------: | ----------------------: | ----------------------: |
@@ -42,7 +52,7 @@ Le renderer en fonctionnement relève 6 draw calls, 4 géométries, 2 textures i
 pnpm build
 pnpm start --port 3100
 # Dans un second terminal, sans tests GPU ou autres benchmarks simultanés :
-PERF_LABEL=cinematic pnpm perf
+PERF_LABEL=revision pnpm perf
 pnpm perf:check
 PERF_LABEL=internal PERF_RUNS=1 PERF_PATH=/fr/projects pnpm perf
 ```
@@ -55,4 +65,4 @@ Les Core Web Vitals terrain (75e percentile des vraies visites, notamment INP) n
 
 Le compteur `performance.memory` est grossier et plafonné/arrondi selon le navigateur : il n'est pas utilisé pour annoncer une consommation mémoire. La mémoire GPU en octets, les watts et la température ne sont pas mesurables de manière fiable dans cette session. Les compteurs de ressources Three.js documentent la complexité et les tests vérifient l'arrêt et le nettoyage, sans inventer de mesure matérielle.
 
-Avant activation plus large sur mobile, tester un Android d'entrée de gamme et Safari iOS, puis recueillir des données terrain avec consentement et périmètre appropriés. Garder le fallback automatique tant que ces mesures n'existent pas. Si le coût de démarrage desktop dépasse le budget, préférer une activation explicite ou un matériau plus simple à de nouveaux effets.
+Avant activation plus large sur mobile, tester un Android d'entrée de gamme et Safari iOS, puis recueillir des données terrain avec consentement et périmètre appropriés. Le fallback reste réservé à une absence ou une erreur WebGL ; le mode statique conserve une image 3D. Si le coût de démarrage desktop dépasse le budget, préférer une activation explicite ou un matériau plus simple à de nouveaux effets.

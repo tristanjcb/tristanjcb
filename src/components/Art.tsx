@@ -34,7 +34,7 @@ export function Art({
         <circle cx="445" cy="390" r="4" fill="currentColor" />
       </svg>
       <span className={styles.annotation}>
-        A / {variant === 'origin' ? 'ORIGIN' : variant.toUpperCase()}
+        T / {variant === 'origin' ? 'ORIGIN' : variant.toUpperCase()}
         <br />
         CODE / SOUND / STORIES
         <br />

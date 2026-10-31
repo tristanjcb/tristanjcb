@@ -1,4 +1,6 @@
 'use client';
+import { Icon } from '@/components/icons/Icon';
+
 import { copy } from '@/content/copy';
 import { useState } from 'react';
 import { email } from '@/content/socials';
@@ -33,7 +35,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
         <textarea name="message" maxLength={1500} required />
       </label>
       <button className="button" type="submit">
-        {copy.ContactForm.prepare_my_email[locale]} ↗
+        {copy.ContactForm.prepare_my_email[locale]} <Icon name="mail" />
       </button>
       <small>{copy.ContactForm.this_form_opens_your_email_application[locale]}</small>
       {status && (

@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import { motionEvent, readMode } from './preferences';
 import styles from './Motion.module.scss';
 // One motion boundary; effects never own navigation, focus or content availability.
 export function MotionSystem() {
@@ -9,18 +8,8 @@ export function MotionSystem() {
   const curtain = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const media = matchMedia('(prefers-reduced-motion: reduce)');
-    const disabled = () => media.matches || readMode() === 'static';
     const sync = () => {
-      document.documentElement.dataset.motion = disabled() ? 'off' : 'on';
-      if (disabled()) {
-        curtain.current?.getAnimations().forEach((animation) => animation.cancel());
-        document
-          .querySelectorAll('[data-scene-host]')
-          .forEach((element) => element.getAnimations().forEach((animation) => animation.cancel()));
-        document
-          .querySelectorAll('[data-reveal]')
-          .forEach((element) => element.removeAttribute('data-reveal'));
-      }
+      document.documentElement.dataset.motion = media.matches ? 'soft' : 'on';
     };
     const reveal = new IntersectionObserver(
       (entries) =>
@@ -41,22 +30,14 @@ export function MotionSystem() {
     );
     document.querySelectorAll('[data-aurora-art]').forEach((element) => artwork.observe(element));
     sync();
-    if (!disabled())
-      document.querySelectorAll('main h2,main .project-card').forEach((element) => {
-        if (element.getBoundingClientRect().top > innerHeight) {
-          element.setAttribute('data-reveal', 'pending');
-          reveal.observe(element);
-        }
-      });
+    document.querySelectorAll('main h2,main .project-card').forEach((element) => {
+      if (element.getBoundingClientRect().top > innerHeight) {
+        element.setAttribute('data-reveal', 'pending');
+        reveal.observe(element);
+      }
+    });
     const navigate = (event: MouseEvent) => {
-      if (
-        disabled() ||
-        event.button !== 0 ||
-        event.metaKey ||
-        event.ctrlKey ||
-        event.shiftKey ||
-        event.altKey
-      )
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
         return;
       const link = event.target instanceof Element ? event.target.closest('a') : null;
       if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self'))
@@ -65,17 +46,19 @@ export function MotionSystem() {
       if (target.origin !== location.origin || target.pathname === location.pathname) return;
       curtain.current?.getAnimations().forEach((animation) => animation.cancel());
       curtain.current?.animate(
-        [
-          { opacity: 0, transform: 'translateY(100%)' },
-          { opacity: 0.35, transform: 'translateY(0)', offset: 0.3 },
-          { opacity: 0, transform: 'translateY(-100%)' },
-        ],
-        { duration: 420, easing: 'cubic-bezier(.2,.8,.2,1)' },
+        media.matches
+          ? [{ opacity: 0 }, { opacity: 0.18, offset: 0.4 }, { opacity: 0 }]
+          : [
+              { opacity: 0, transform: 'translateY(100%)' },
+              { opacity: 0.35, transform: 'translateY(0)', offset: 0.3 },
+              { opacity: 0, transform: 'translateY(-100%)' },
+            ],
+        { duration: media.matches ? 180 : 420, easing: 'cubic-bezier(.2,.8,.2,1)' },
       );
     };
     const surprise = (event: KeyboardEvent) => {
       if (
-        disabled() ||
+        media.matches ||
         event.altKey ||
         event.metaKey ||
         event.ctrlKey ||
@@ -83,7 +66,7 @@ export function MotionSystem() {
         event.target instanceof HTMLTextAreaElement
       )
         return;
-      if (event.key === '*') {
+      if (event.key === '*' && document.querySelector('[data-scene-motion="animated"]')) {
         document
           .querySelector<HTMLElement>('[data-scene-host]')
           ?.animate(
@@ -97,8 +80,6 @@ export function MotionSystem() {
       }
     };
     document.addEventListener('click', navigate, true);
-    window.addEventListener(motionEvent, sync);
-    window.addEventListener('storage', sync);
     media.addEventListener('change', sync);
     window.addEventListener('keydown', surprise);
     return () => {
@@ -108,8 +89,6 @@ export function MotionSystem() {
         .querySelectorAll('[data-reveal]')
         .forEach((element) => element.removeAttribute('data-reveal'));
       document.removeEventListener('click', navigate, true);
-      window.removeEventListener(motionEvent, sync);
-      window.removeEventListener('storage', sync);
       media.removeEventListener('change', sync);
       window.removeEventListener('keydown', surprise);
     };

@@ -46,7 +46,7 @@ Les textes sont provisoires, fondés uniquement sur les informations fournies et
 
 `next-themes` initialise le thème avant affichage et stocke `aurora-theme`. Les boîtes de dialogue HTML natives assurent la modalité, le parcours clavier et Escape. La recherche ⌘K / Ctrl+K couvre pages, projets et articles publiés. Le menu contient les sélecteurs langue/thème.
 
-Les transitions d'entrée, orbites et interactions sont légères ; `prefers-reduced-motion` les désactive. Aucune interception du défilement.
+Les transitions d'entrée, orbites et interactions sont légères ; `prefers-reduced-motion` réduit leurs déplacements ; le mode statique ne fige que la 3D. Aucune interception du défilement.
 
 ## Contact
 

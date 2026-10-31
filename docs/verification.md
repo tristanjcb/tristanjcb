@@ -36,3 +36,9 @@ Vérifications locales exécutées : installation figée, Oxlint, Oxfmt, types s
 La première CI GitHub cinématique a exécuté les **20 scénarios avec succès, sans ignorer les deux scénarios GPU**, sur un runner distinct du poste local. Les derniers relevés du build corrigé donnent un LCP médian de 56 ms desktop / 644 ms mobile simulé, contre 60 / 604 ms avant la 3D ; le JS gzip chargé est d’environ 305 ko avec scène et 161 ko sur mobile automatique. Les budgets enregistrés passent. Ces valeurs ne sont pas des statistiques terrain.
 
 La transparence des ornements a été corrigée après inspection des captures pour éviter leur écriture dans le depth buffer devant la matière. Les tests de fermeture des pôles préviennent aussi les fissures de surface générative. Le correctif repasse le build et les 20 scénarios. Main et la production restent inchangés ; aucune promotion automatique.
+
+## Révision de l’interface et de la 3D
+
+Les anciens résultats ci-dessus décrivent la version précédente. La révision conserve la 3D en mode statique et sur mobile, indépendamment des animations de l’interface. Thème animé, typographie renforcée, marque Tristan, Sponsors dans la navigation, icônes SVG et destinations sociales fournies par Tristan. YouTube et TikTok pointent volontairement vers leurs plateformes sans identifiant. Les nouvelles mesures et régressions figurent dans `performance/revision.json` et son README.
+
+Vérifications locales de cette révision : build, Oxlint, Oxfmt, typecheck, 11 tests unitaires et 22 tests navigateur réussis, aucun scénario ignoré. Captures Contact et Hero produites pour desktop et mobile ; framebuffer Retina, canvas conservé et immobile, reprise de mouvement, perte WebGL, thèmes et liens sociaux vérifiés.

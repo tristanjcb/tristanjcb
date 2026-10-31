@@ -1,3 +1,4 @@
+import { Icon } from '@/components/icons/Icon';
 export const dynamicParams = false;
 import { copy } from '@/content/copy';
 import Link from 'next/link';
@@ -34,7 +35,8 @@ export default async function Detail({ params }: { params: Promise<Params> }) {
     <div className="container page-content" data-category={category}>
       <div className="page-intro">
         <Link className="breadcrumb" href={`/${locale}/projects/${category}`}>
-          ← {categories.find((item) => item.id === category)!.title[locale]}
+          <Icon name="chevron-left" />{' '}
+          {categories.find((item) => item.id === category)!.title[locale]}
         </Link>
         <p className="eyebrow">
           {project.status[locale]}
@@ -58,7 +60,7 @@ export default async function Detail({ params }: { params: Promise<Params> }) {
         </div>
         {project.links?.map((link) => (
           <a className="text-link" key={link.href} href={link.href}>
-            {link.label} ↗
+            {link.label} <Icon name="chevron-right" />
           </a>
         ))}
       </div>
@@ -99,7 +101,7 @@ export default async function Detail({ params }: { params: Promise<Params> }) {
         ))}
       </div>
       <Link className="text-link" href={`/${locale}/projects`}>
-        ← {ui.back[locale]}
+        <Icon name="chevron-left" /> {ui.back[locale]}
       </Link>
     </div>
   );

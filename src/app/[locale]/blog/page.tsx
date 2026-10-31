@@ -1,3 +1,4 @@
+import { Icon } from '@/components/icons/Icon';
 import { copy } from '@/content/copy';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -41,7 +42,7 @@ export default async function Blog({ params }: { params: Promise<{ locale: strin
         }))}
       />
       <Link className="text-link" style={{ marginTop: 40 }} href="/rss.xml" prefetch={false}>
-        RSS ↗
+        RSS <Icon name="chevron-right" />
       </Link>
     </div>
   );

@@ -22,7 +22,7 @@ const mono = IBM_Plex_Mono({
 });
 export const metadata: Metadata = {
   metadataBase: new URL(origin),
-  title: { default: 'Aurora · Tristan', template: '%s · Aurora' },
+  title: { default: 'Tristan', template: '%s · Tristan' },
 };
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -43,7 +43,7 @@ export default async function Layout({
   const items = [
     ...navigation.map((item) => ({
       label: ui[item.key][locale],
-      detail: 'Aurora',
+      detail: 'Tristan',
       href: `/${locale}${item.path}`,
     })),
     ...projects.map((project) => ({

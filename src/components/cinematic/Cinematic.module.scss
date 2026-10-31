@@ -87,7 +87,7 @@
   left: 13%;
   top: 10%;
   font:
-    10px/1.8 var(--font-mono),
+    12px/1.8 var(--font-mono),
     monospace;
   letter-spacing: 0.15em;
   color: var(--muted);
@@ -97,7 +97,7 @@
   right: 8%;
   top: 12%;
   font:
-    8px var(--font-mono),
+    11px var(--font-mono),
     monospace;
   color: var(--muted);
   letter-spacing: 0.1em;
@@ -133,7 +133,7 @@
   padding: 12px;
   border-bottom: 1px solid var(--border);
   font:
-    9px var(--font-mono),
+    12px var(--font-mono),
     monospace;
   color: var(--muted);
 }
@@ -146,7 +146,7 @@
   margin: 0;
   padding: 16px 12px;
   font:
-    10px/1.9 var(--font-mono),
+    12px/1.9 var(--font-mono),
     monospace;
   overflow: auto;
   color: var(--muted);
@@ -159,13 +159,13 @@
   font-style: normal;
   color: var(--muted);
   width: 24px;
-  font-size: 8px;
+  font-size: 11px;
 }
 .audio {
   padding: 18px 14px;
   p {
     font:
-      8px/1.8 var(--font-mono),
+      11px/1.8 var(--font-mono),
       monospace;
     color: var(--muted);
     margin-top: 12px;
@@ -212,7 +212,7 @@
     left: 14px;
     bottom: 15px;
     font:
-      8px var(--font-mono),
+      11px var(--font-mono),
       monospace;
     color: var(--muted);
   }
@@ -232,7 +232,7 @@
     min-height: 44px;
     padding: 8px 0;
     font:
-      10px var(--font-mono),
+      12px var(--font-mono),
       monospace;
     border-bottom: 1px solid var(--border);
   }
@@ -244,7 +244,7 @@
 .phase {
   color: var(--muted);
   font:
-    10px var(--font-mono),
+    12px var(--font-mono),
     monospace;
   min-width: 115px;
 }
@@ -256,7 +256,7 @@
   padding: 0 16px;
   summary {
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
     padding: 16px 0;
     min-height: 48px;
     span {
@@ -265,7 +265,7 @@
     }
   }
   p {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--muted);
     padding-bottom: 15px;
   }
@@ -276,13 +276,13 @@
   gap: 20px;
   padding: 10px 0 20px;
   label {
-    font-size: 11px;
+    font-size: 13px;
   }
   output {
     float: right;
     color: var(--muted);
     font:
-      10px var(--font-mono),
+      12px var(--font-mono),
       monospace;
   }
   input {
@@ -301,7 +301,7 @@
     border-radius: 3px;
   }
   button {
-    font-size: 11px;
+    font-size: 13px;
     min-height: 44px;
     align-self: end;
   }
@@ -355,10 +355,6 @@
   opacity: 0.1;
   transition: opacity 500ms ease;
 }
-.journey[data-motion='off'] .ide {
-  opacity: 1;
-  transform: none;
-}
 @media (min-width: 1001px) {
   .journey .content :global(.hero h1) {
     font-size: clamp(70px, 7.2vw, 104px);
@@ -397,12 +393,12 @@
     display: none;
   }
   .gpuLabel {
-    font-size: 7px;
+    font-size: 11px;
     right: 5%;
     top: 12%;
   }
   .artLabel {
-    font-size: 8px;
+    font-size: 11px;
     left: 8%;
     top: 8%;
   }
@@ -430,14 +426,14 @@
     margin-top: 25px;
   }
   .phase {
-    font-size: 9px;
+    font-size: 12px;
     min-width: 100px;
   }
   .introStatus {
     gap: 12px;
   }
   .introStatus button {
-    font-size: 9px;
+    font-size: 12px;
   }
   .explore {
     margin-bottom: 25px;
@@ -453,8 +449,87 @@
   .canvas,
   .fallback,
   .organic,
-  .ide,
   .sticky {
     transition: none !important;
+  }
+}
+.ide {
+  width: 310px;
+}
+.ide pre {
+  font-size: 12px;
+  line-height: 1.9;
+  font-weight: 500;
+}
+.ide code i {
+  font-size: 11px;
+  width: 26px;
+}
+.ideBar {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 14px;
+}
+.artLabel,
+.gpuLabel {
+  font-size: 12px;
+  font-weight: 500;
+}
+.introStatus button {
+  font-size: 13px;
+  font-weight: 550;
+}
+.explore summary {
+  font-size: 15px;
+  font-weight: 550;
+}
+.explore p {
+  font-size: 13px;
+}
+.sliders label {
+  font-size: 14px;
+  font-weight: 550;
+}
+.sliders output {
+  font-size: 13px;
+}
+.sliders button {
+  font-size: 14px;
+  font-weight: 550;
+}
+@media (max-width: 700px) {
+  .artLabel,
+  .gpuLabel {
+    font-size: 11px;
+  }
+  .phase {
+    flex-basis: 100%;
+    width: 100%;
+    font-size: 12px;
+  }
+  .introStatus {
+    gap: 12px;
+  }
+  .introStatus button {
+    font-size: 13px;
+  }
+  .ide {
+    display: none;
+  }
+}
+
+.journey[data-scene-motion='static'] {
+  .canvas,
+  .fallback,
+  .organic,
+  .sticky {
+    transition: none;
+  }
+}
+@media (max-width: 700px) {
+  .gpuLabel {
+    top: auto;
+    bottom: 14px;
+    right: 18px;
   }
 }

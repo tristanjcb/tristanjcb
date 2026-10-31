@@ -1,0 +1,1 @@
+Brand silhouettes are sourced from [Simple Icons](https://github.com/simple-icons/simple-icons), distributed under CC0-1.0. Brand names and trademarks belong to their respective owners. Interface symbols and the outlined LinkedIn mark are local SVG drawings. No icon font or remote icon request is used at runtime.

@@ -24,7 +24,7 @@ export function metadata(
       url: `${origin}/${locale}${path}`,
       locale: locale === 'fr' ? 'fr_FR' : 'en_GB',
       alternateLocale: locale === 'fr' ? 'en_GB' : 'fr_FR',
-      siteName: 'Aurora · Tristan',
+      siteName: 'Tristan',
       type: 'website',
       images: [{ url: `${origin}/${locale}/opengraph-image`, width: 1200, height: 630 }],
     },

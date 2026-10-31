@@ -20,7 +20,7 @@ export function Fallback() {
         ))}
       </svg>
       <span className={styles.artLabel}>
-        A / ∞<br />
+        T / ∞<br />
         LIGHT AS A MATERIAL
       </span>
     </div>

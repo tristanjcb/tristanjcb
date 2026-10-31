@@ -9,6 +9,7 @@ export type SceneState = {
   density: number;
   palette: Palette;
   dark: boolean;
+  motion: boolean;
   pointer: { x: number; y: number };
 };
 export const initialScene = (): SceneState => ({
@@ -17,6 +18,7 @@ export const initialScene = (): SceneState => ({
   density: 0.5,
   palette: 'aurora',
   dark: true,
+  motion: false,
   pointer: { x: 0, y: 0 },
 });
 export function bounded(value: unknown, min: number, max: number, fallback: number): number {
@@ -39,10 +41,10 @@ export function quality(width: number, cores: number) {
   const modest = width <= 700 || cores <= 4;
   return {
     modest,
-    dpr: modest ? 1 : 1.5,
-    fps: modest ? 24 : 40,
+    dpr: 2,
+    fps: modest ? 30 : 60,
     particles: modest ? 80 : 200,
-    segments: modest ? 28 : 44,
+    segments: modest ? 48 : 64,
   };
 }
 // Pure, deterministic parametric positions. No visitor code or shader source is evaluated.

@@ -1,3 +1,4 @@
+import { Icon } from '@/components/icons/Icon';
 import { copy } from '@/content/copy';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return metadata(
     locale,
     '',
-    'Tristan · Code, Sound, Stories',
+    'Code, Sound, Stories',
     copy.page.aurora_tristan_s_world_of_development[locale],
   );
 }
@@ -39,7 +40,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               {copy.page.code_taking_shape_sound_telling_stories[locale]}
             </p>
             <Link className="button" href={`/${locale}/projects`}>
-              {ui.projects[locale]} <span>↗</span>
+              {ui.projects[locale]}{' '}
+              <span>
+                <Icon name="chevron-right" />
+              </span>
             </Link>
             <div className="hero-index">
               <span>01 — DEVELOPMENT</span>
@@ -51,7 +55,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <UniverseControls locale={locale} />
           <div className="hero-baseline">
             <span>EXPLORING THE SPACE BETWEEN DISCIPLINES</span>
-            <a href="#development">{copy.page.scroll_to_explore[locale]} ↓</a>
+            <a href="#development">
+              {copy.page.scroll_to_explore[locale]} <Icon name="down" />
+            </a>
           </div>
         </section>
         <section
@@ -80,7 +86,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </span>
               <p>{copy.page.i_explore_development_through_web_applications[locale]}</p>
               <Link className="text-link" href={`/${locale}/projects/dev`}>
-                {ui.dev[locale]} ↗
+                {ui.dev[locale]} <Icon name="chevron-right" />
               </Link>
               <p className="mono muted">TypeScript / Node.js / Python</p>
             </div>
@@ -108,7 +114,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 </h2>
                 <p>{copy.page.under_the_name_vykev_music_opens[locale]}</p>
                 <Link className="text-link" href={`/${locale}/projects/music`}>
-                  {copy.page.enter_the_world_of_vykev[locale]} ↗
+                  {copy.page.enter_the_world_of_vykev[locale]} <Icon name="chevron-right" />
                 </Link>
               </div>
             </div>
@@ -131,7 +137,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <div className="universe-aside">
               <p>{copy.page.sharing_the_process_the_detours_and[locale]}</p>
               <Link className="text-link" href={`/${locale}/projects/creator`}>
-                {ui.creator[locale]} — {ui.soon[locale]} ↗
+                {ui.creator[locale]} — {ui.soon[locale]} <Icon name="chevron-right" />
               </Link>
             </div>
           </div>
@@ -143,7 +149,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <h2>{copy.page.selected_fragments[locale]}</h2>
             </div>
             <Link className="text-link" href={`/${locale}/projects`}>
-              {ui.all[locale]} ↗
+              {ui.all[locale]} <Icon name="chevron-right" />
             </Link>
           </div>
           <ProjectCard project={projects[0]} locale={locale} featured />
@@ -171,7 +177,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </h2>
           <p>{copy.page.self_taught_based_in_france_i[locale]}</p>
           <Link className="text-link" href={`/${locale}/me`}>
-            {copy.page.behind_the_screen[locale]} ↗
+            {copy.page.behind_the_screen[locale]} <Icon name="chevron-right" />
           </Link>
         </div>
       </section>
@@ -184,7 +190,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             </h2>
           </div>
           <Link className="text-link" href={`/${locale}/blog`}>
-            {ui.blog[locale]} ↗
+            {ui.blog[locale]} <Icon name="chevron-right" />
           </Link>
         </div>
         {articles.length ? (
@@ -208,7 +214,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <h3>{ui.empty[locale]}</h3>
               <p>{ui.emptyBody[locale]}</p>
             </div>
-            <span className="mono">{ui.soon[locale]} ↗</span>
+            <span className="mono">
+              {ui.soon[locale]} <Icon name="chevron-right" />
+            </span>
           </div>
         )}
       </section>

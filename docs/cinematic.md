@@ -31,12 +31,11 @@ Le contenu est SSR et reste lisible indépendamment de la scène. La 3D enrichit
 
 ## Garde-fous
 
-- `prefers-reduced-motion` : pas d'import du renderer, pas de canvas, pas de Curtain ni révélations masquées. Le mode statique est également persistant et s'applique aux pages internes.
-- Sur mobile (≤700 px), économie de données ou connexion 2G, le fallback est le choix automatique. La 3D reste une option explicite si la réduction des mouvements n'est pas demandée.
-- Scène différée de 1,8 seconde, uniquement si visible et document actif. Un retour dans la page peut déclencher le chargement laissé en attente.
-- Échec WebGL, import impossible, perte de contexte ou préparation dépassant huit secondes : retour statique. Aucun rechargement automatique en boucle.
-- DPR plafonné à 1 sur mobile/appareil modeste, 1,5 en desktop ; 80/200 particules maximum ; cadence plafonnée à 24/40 images/s. Les plateaux de rafraîchissement réels dépendent du navigateur.
-- Dégradation automatique vers DPR 1, cadence 24 et au plus 60 particules si le coût CPU de rendu reste élevé. Ce signal ne constitue pas une mesure directe de durée GPU.
+- La 3D se charge sur mobile comme sur desktop. Le mode statique conserve le canvas et rend une image fixe ; thème, chapitre et paramètres déclenchent un nouveau rendu ponctuel. Aucun RAF permanent dans ce mode.
+- `prefers-reduced-motion` sélectionne initialement la 3D fixe. Une activation explicite permet de l'animer. Cette préférence adoucit séparément les déplacements de l'interface ; le bouton statique ne modifie jamais les animations de l'interface.
+- Scène différée de 700 ms. Échec WebGL, import impossible, perte de contexte ou préparation dépassant quinze secondes : fallback CSS/SVG. Aucun rechargement automatique en boucle.
+- Antialiasing actif et DPR natif plafonné à 2 sur les deux profils ; géométrie 48/64 segments, 80/200 particules et cadence 30/60 images/s selon le profil.
+- La dégradation automatique réduit cadence et particules, jamais la résolution. Le coût CPU échantillonné ne constitue pas une mesure directe de durée GPU.
 - RAF suspendu hors de la section globale et quand l'onglet est masqué ; animations des cartes suspendues hors écran.
 - ResizeObserver, observers, événements, timers et RAF nettoyés. Géométries, matériaux, listes de rendu et contexte GPU libérés au démontage ; aucun contexte conservé sur les pages internes.
 - Le loader n'entoure plus tout le site : les pages statiques livrent leur HTML complet même sans JavaScript. Le squelette reste sur les articles longs ; une navigation `noscript` rend les liens principaux disponibles.

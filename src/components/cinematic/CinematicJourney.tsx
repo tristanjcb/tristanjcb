@@ -1,4 +1,6 @@
 'use client';
+import { Icon } from '@/components/icons/Icon';
+
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { cinematic, narrativeCode } from '@/content/cinematic';
@@ -14,12 +16,16 @@ const JourneyContext = createContext<{
   status: string;
   skip: () => void;
   phase: number;
+  animated: boolean;
+  invalidate: () => void;
 }>({
   chapter: 'origin',
   state: { current: initialScene() },
   status: 'static',
   skip: () => {},
   phase: 4,
+  animated: false,
+  invalidate: () => {},
 });
 export function CinematicJourney({
   children,
@@ -36,11 +42,17 @@ export function CinematicJourney({
     reduced = useReducedMotion();
   const { resolvedTheme } = useTheme();
   const [chapter, setChapter] = useState<Chapter>('origin'),
-    [status, setStatus] = useState('static'),
+    [status, setStatus] = useState('loading'),
     [phase, setPhase] = useState(0);
+  const animated = mode === 'animated' || (mode === 'auto' && !reduced);
   const skip = () => setPhase(4);
   useEffect(() => {
+    scene.current.motion = animated;
+    engine.current?.update();
+  }, [animated]);
+  useEffect(() => {
     scene.current.dark = resolvedTheme !== 'light';
+    engine.current?.update();
   }, [resolvedTheme]);
   useEffect(() => {
     const element = root.current;
@@ -56,14 +68,17 @@ export function CinematicJourney({
           if (chapters.includes(value as Chapter)) next = value as Chapter;
         }
       }
-      scene.current.chapter = next;
+      if (scene.current.chapter !== next) {
+        scene.current.chapter = next;
+        engine.current?.update();
+      }
       setChapter((previous) => (previous === next ? previous : next));
     };
     const scroll = () => {
       if (!pending) pending = requestAnimationFrame(update);
     };
     const pointer = (event: PointerEvent) => {
-      if (reduced || event.pointerType !== 'mouse') return;
+      if (!scene.current.motion || event.pointerType !== 'mouse') return;
       scene.current.pointer = {
         x: Math.max(-1, Math.min(1, (event.clientX / innerWidth - 0.5) * 2)),
         y: Math.max(-1, Math.min(1, (event.clientY / innerHeight - 0.5) * 2)),
@@ -79,28 +94,17 @@ export function CinematicJourney({
       window.removeEventListener('resize', scroll);
       element.removeEventListener('pointermove', pointer);
     };
-  }, [reduced]);
+  }, []);
   useEffect(() => {
-    if (reduced || mode === 'static') return;
+    if (reduced) return;
     const timers = [650, 1300, 1900, 2600].map((delay, index) =>
       setTimeout(() => setPhase((previous) => Math.max(previous, index + 1)), delay),
     );
     return () => timers.forEach(clearTimeout);
-  }, [reduced, mode]);
+  }, [reduced]);
   useEffect(() => {
     const element = host.current;
     if (!element) return;
-    // Synchronize the lifecycle of an external GPU resource with React.
-    // oxlint-disable-next-line react/set-state-in-effect
-    setStatus('static');
-    const connection = (
-      navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }
-    ).connection;
-    const automatic =
-      innerWidth > 700 &&
-      !connection?.saveData &&
-      !['slow-2g', '2g'].includes(connection?.effectiveType ?? '');
-    if (reduced || mode === 'static' || (mode === 'auto' && !automatic)) return;
     let cancelled = false,
       visible = true,
       instance: Engine | null = null;
@@ -133,7 +137,7 @@ export function CinematicJourney({
     const launch = () => {
       if (cancelled || document.hidden || !visible || !due || started) return;
       started = true;
-      startupTimer = setTimeout(failure, 8000);
+
       setStatus('loading');
       void import('./renderer')
         .then(async ({ createAurora }) => {
@@ -141,6 +145,7 @@ export function CinematicJourney({
           try {
             instance = createAurora(element, scene, failure);
             engine.current = instance;
+            startupTimer = setTimeout(failure, 15000);
             await instance.ready;
             if (cancelled || failed) return;
             clearTimeout(startupTimer);
@@ -155,7 +160,7 @@ export function CinematicJourney({
     const timer = setTimeout(() => {
       due = true;
       launch();
-    }, 1800);
+    }, 700);
     return () => {
       cancelled = true;
       clearTimeout(timer);
@@ -165,8 +170,8 @@ export function CinematicJourney({
       instance?.dispose();
       engine.current = null;
     };
-  }, [mode, reduced]);
-  const displayedStatus = reduced || mode === 'static' ? 'static' : status;
+  }, []);
+  const displayedStatus = status;
   return (
     <JourneyContext.Provider
       value={{
@@ -174,14 +179,16 @@ export function CinematicJourney({
         state: scene,
         status: displayedStatus,
         skip,
-        phase: reduced || mode === 'static' ? 4 : phase,
+        phase: reduced ? 4 : phase,
+        animated,
+        invalidate: () => engine.current?.update(),
       }}
     >
       <div
         ref={root}
         className={styles.journey}
         data-chapter={chapter}
-        data-motion={reduced || mode === 'static' ? 'off' : 'on'}
+        data-scene-motion={animated ? 'animated' : 'static'}
         data-scene-status={displayedStatus}
       >
         <div className={styles.rail} aria-hidden="true">
@@ -189,7 +196,7 @@ export function CinematicJourney({
             <Fallback />
             <div ref={host} className={styles.canvas} data-scene-host />
             {displayedStatus === 'ready' && (
-              <span className={styles.gpuLabel}>REALTIME / AURORA MATERIAL</span>
+              <span className={styles.gpuLabel}>TRISTAN / REALTIME MATERIAL</span>
             )}
             <FloatingIDE locale={locale} />
           </div>
@@ -224,7 +231,9 @@ function FloatingIDE({ locale }: { locale: Locale }) {
               ? 'composition.canvas'
               : 'universe.ts'}
         </span>
-        <span>↗</span>
+        <span>
+          <Icon name="chevron-right" />
+        </span>
       </div>
       {kind === 'code' ? (
         <pre>
@@ -259,15 +268,15 @@ function FloatingIDE({ locale }: { locale: Locale }) {
   );
 }
 export function UniverseControls({ locale }: { locale: Locale }) {
-  const { state, status, skip, phase } = useContext(JourneyContext);
-  const mode = useVisualMode(),
-    reduced = useReducedMotion();
+  const { state, status, skip, phase, animated, invalidate } = useContext(JourneyContext);
+  const reduced = useReducedMotion();
   const [energy, setEnergy] = useState(0.35),
     [density, setDensity] = useState(0.5),
     [palette, setPalette] = useState('aurora');
   const update = (e: number, d: number, p: string) => {
     const values = sceneSettings(e, d, p);
     Object.assign(state.current, values);
+    invalidate();
     setEnergy(values.energy);
     setDensity(values.density);
     setPalette(values.palette);
@@ -291,18 +300,14 @@ export function UniverseControls({ locale }: { locale: Locale }) {
           aria-hidden={phase >= 4}
           style={{ visibility: phase >= 4 ? 'hidden' : 'visible' }}
         >
-          {cinematic.skip[locale]} ↗
+          {cinematic.skip[locale]} <Icon name="chevron-right" />
         </button>
         <button
-          onClick={() => setMode(mode === 'animated' || status === 'ready' ? 'static' : 'animated')}
-          disabled={reduced}
-          aria-pressed={mode === 'static' || reduced}
+          onClick={() => setMode(animated ? 'static' : 'animated')}
+          aria-pressed={!animated}
+          disabled={status !== 'ready'}
         >
-          {reduced
-            ? cinematic.staticMode[locale]
-            : mode !== 'animated' && status !== 'ready'
-              ? cinematic.animatedMode[locale]
-              : cinematic.staticMode[locale]}
+          {animated ? cinematic.staticMode[locale] : cinematic.animatedMode[locale]}
         </button>
       </div>
       <details className={styles.explore}>
@@ -348,12 +353,14 @@ export function UniverseControls({ locale }: { locale: Locale }) {
               value={palette}
               onChange={(event) => update(energy, density, event.target.value)}
             >
-              <option value="aurora">Aurora</option>
+              <option value="aurora">Tristan</option>
               <option value="ice">Ice</option>
               <option value="rose">Rose</option>
             </select>
           </label>
-          <button onClick={() => update(0.35, 0.5, 'aurora')}>{cinematic.reset[locale]} ↺</button>
+          <button onClick={() => update(0.35, 0.5, 'aurora')}>
+            {cinematic.reset[locale]} <Icon name="reset" />
+          </button>
         </div>
         <p>
           {reduced

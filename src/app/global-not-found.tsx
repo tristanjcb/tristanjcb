@@ -1,3 +1,4 @@
+import { Icon } from '@/components/icons/Icon';
 import Link from 'next/link';
 export default function GlobalNotFound() {
   return (
@@ -12,7 +13,7 @@ export default function GlobalNotFound() {
           minHeight: '100vh',
         }}
       >
-        <p>404 / AURORA</p>
+        <p>404 / TRISTAN</p>
         <h1>
           Cette page n’existe pas.
           <br />
@@ -20,11 +21,11 @@ export default function GlobalNotFound() {
         </h1>
         <p>
           <Link style={{ color: '#9188f8' }} href="/fr">
-            Accueil FR ↗
+            Accueil FR <Icon name="chevron-right" />
           </Link>{' '}
           ·{' '}
           <Link style={{ color: '#74ddea' }} href="/en">
-            Home EN ↗
+            Home EN <Icon name="chevron-right" />
           </Link>
         </p>
       </body>

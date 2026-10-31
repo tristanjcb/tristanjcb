@@ -1,3 +1,4 @@
+import { Icon } from '@/components/icons/Icon';
 import Link from 'next/link';
 import { type Project, projectPath } from '@/content/projects';
 import { type Locale } from '@/lib/i18n';
@@ -40,7 +41,7 @@ export function ProjectCard({
           href={`/${locale}${projectPath(project)}`}
           aria-label={project.title}
         >
-          ↗
+          <Icon name="chevron-right" />
         </Link>
       </div>
     </article>
