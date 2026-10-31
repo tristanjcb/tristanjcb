@@ -1,4 +1,5 @@
 export const dynamicParams = false;
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Inter, Space_Grotesk, IBM_Plex_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
@@ -7,6 +8,7 @@ import { projects, projectPath } from '@/content/projects';
 import { getArticles } from '@/lib/articles';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
+import { MotionSystem } from '@/components/cinematic/MotionSystem';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { origin } from '@/lib/seo';
 import '@/styles/globals.scss';
@@ -63,10 +65,20 @@ export default async function Layout({
     >
       <body>
         <ThemeProvider>
+          <MotionSystem />
           <a className="skip-link" href="#main">
             {ui.skip[locale]}
           </a>
           <Navigation locale={locale} items={items} translatedArticles={translatedArticles} />
+          <noscript>
+            <nav className="no-script-nav" aria-label={ui.menu[locale]}>
+              {navigation.map((item) => (
+                <Link key={item.key} href={`/${locale}${item.path}`}>
+                  {ui[item.key][locale]}
+                </Link>
+              ))}
+            </nav>
+          </noscript>
           <main id="main" tabIndex={-1}>
             {children}
           </main>

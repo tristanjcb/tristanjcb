@@ -115,3 +115,7 @@
     animation: none;
   }
 }
+.art:not([data-art-active='true']) .orbit,
+.art:not([data-art-active='true']) .orbit2 {
+  animation-play-state: paused;
+}

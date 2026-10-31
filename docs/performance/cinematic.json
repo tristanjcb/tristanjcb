@@ -1,0 +1,133 @@
+{
+  "label": "cinematic",
+  "base": "http://127.0.0.1:3100",
+  "note": "Lab measurements, cold contexts/profile; see run counts. Interaction timing is a lab sample, not field INP. JS gzip is computed over fetched scripts. Heap is JS only; GPU memory is not exposed.",
+  "results": [
+    {
+      "profile": "desktop",
+      "run": 1,
+      "lcp": 80,
+      "cls": 0.00009858410493827159,
+      "longTaskMs": 245,
+      "interactionMs": 72,
+      "loadMs": 81.2999999821186,
+      "resources": 432598,
+      "frameP95Ms": 16.699999999999818,
+      "heapBytes": 10600000,
+      "canvas": true,
+      "gpu": {
+        "sceneHost": "true",
+        "rendering": "active",
+        "drawCalls": "6",
+        "gpuGeometries": "4",
+        "gpuTextures": "2",
+        "triangles": "4440",
+        "frameCpuMs": "0.10"
+      },
+      "javaScriptRaw": 1094350,
+      "javaScriptGzip": 304541
+    },
+    {
+      "profile": "desktop",
+      "run": 2,
+      "lcp": 60,
+      "cls": 0.00009858410493827159,
+      "longTaskMs": 205,
+      "interactionMs": 72,
+      "loadMs": 58.80000001192093,
+      "resources": 432598,
+      "frameP95Ms": 16.700000000000728,
+      "heapBytes": 10000000,
+      "canvas": true,
+      "gpu": {
+        "sceneHost": "true",
+        "rendering": "active",
+        "drawCalls": "6",
+        "gpuGeometries": "4",
+        "gpuTextures": "2",
+        "triangles": "4440",
+        "frameCpuMs": "0.10"
+      },
+      "javaScriptRaw": 1094350,
+      "javaScriptGzip": 304541
+    },
+    {
+      "profile": "desktop",
+      "run": 3,
+      "lcp": 56,
+      "cls": 0.00009858410493827159,
+      "longTaskMs": 203,
+      "interactionMs": 64,
+      "loadMs": 57.099999994039536,
+      "resources": 432598,
+      "frameP95Ms": 16.700000000000728,
+      "heapBytes": 10000000,
+      "canvas": true,
+      "gpu": {
+        "sceneHost": "true",
+        "rendering": "active",
+        "drawCalls": "6",
+        "gpuGeometries": "4",
+        "gpuTextures": "2",
+        "triangles": "4440",
+        "frameCpuMs": "0.10"
+      },
+      "javaScriptRaw": 1094350,
+      "javaScriptGzip": 304541
+    },
+    {
+      "profile": "mobile-4x-slow4g",
+      "run": 1,
+      "lcp": 632,
+      "cls": 0.000163181959939389,
+      "longTaskMs": 3,
+      "interactionMs": 56,
+      "loadMs": 1677.5999999940395,
+      "resources": 284469,
+      "frameP95Ms": 16.799999999999272,
+      "heapBytes": 10000000,
+      "canvas": false,
+      "gpu": {
+        "sceneHost": "true"
+      },
+      "javaScriptRaw": 519738,
+      "javaScriptGzip": 160698
+    },
+    {
+      "profile": "mobile-4x-slow4g",
+      "run": 2,
+      "lcp": 644,
+      "cls": 0.000163181959939389,
+      "longTaskMs": 4,
+      "interactionMs": 56,
+      "loadMs": 1685.5999999940395,
+      "resources": 284469,
+      "frameP95Ms": 16.799999999999272,
+      "heapBytes": 10000000,
+      "canvas": false,
+      "gpu": {
+        "sceneHost": "true"
+      },
+      "javaScriptRaw": 519738,
+      "javaScriptGzip": 160698
+    },
+    {
+      "profile": "mobile-4x-slow4g",
+      "run": 3,
+      "lcp": 644,
+      "cls": 0.000163181959939389,
+      "longTaskMs": 4,
+      "interactionMs": 56,
+      "loadMs": 1687.5,
+      "resources": 284469,
+      "frameP95Ms": 16.80000000000109,
+      "heapBytes": 10000000,
+      "canvas": false,
+      "gpu": {
+        "sceneHost": "true"
+      },
+      "javaScriptRaw": 519738,
+      "javaScriptGzip": 160698
+    }
+  ]
+}

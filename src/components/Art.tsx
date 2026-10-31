@@ -10,6 +10,7 @@ export function Art({
     <div
       className={`${styles.art} ${compact ? styles.compact : ''}`}
       data-variant={variant}
+      data-aurora-art
       aria-hidden="true"
     >
       <div className={styles.grid} />

@@ -1,0 +1,98 @@
+// Enhancement only. Removing this file leaves every interaction and all content usable.
+[data-reveal='pending'] {
+  opacity: 0;
+  transform: translateY(14px);
+}
+[data-reveal='visible'] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 420ms var(--ease),
+    transform 420ms var(--ease);
+}
+.button,
+.arrow-link,
+.round-link {
+  transition:
+    transform 180ms var(--ease),
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+.button:active,
+.arrow-link:active,
+.round-link:active {
+  transform: translateY(1px) scale(0.98);
+}
+.arrow-link:hover {
+  transform: rotate(8deg);
+  border-color: var(--accent);
+}
+.project-card .project-caption {
+  transition: transform 220ms var(--ease);
+}
+.project-card:focus-within .project-caption,
+.project-card:hover .project-caption {
+  transform: translateX(3px);
+}
+.menu-dialog[open] {
+  animation: dialog-arrive 240ms var(--ease) both;
+}
+.menu-dialog[open] .menu-split nav a {
+  animation: menu-arrive 320ms var(--ease) both;
+}
+@for $index from 1 through 6 {
+  .menu-dialog[open] .menu-split nav a:nth-child(#{$index}) {
+    animation-delay: ($index - 1) * 24ms;
+  }
+}
+.search-dialog[open] {
+  animation: dialog-arrive 160ms var(--ease) both;
+}
+.search-results a {
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease;
+}
+.search-results a:focus-visible {
+  transform: translateX(3px);
+}
+@keyframes dialog-arrive {
+  from {
+    opacity: 0.4;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes menu-arrive {
+  from {
+    opacity: 0.4;
+    transform: translateX(-9px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+[data-motion='off'] *,
+[data-motion='off'] *::before,
+[data-motion='off'] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+[data-motion='off'] [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+html[data-motion='off'] {
+  scroll-behavior: auto !important;
+}

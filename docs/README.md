@@ -38,7 +38,7 @@ pnpm test:smoke
 
 Pour ajouter un projet, ajouter un objet `Project` dans les données. Les pages, la recherche, les catégories et le sitemap le prennent en compte. Aucun nouveau composant nécessaire. Les images validées peuvent être ajoutées dans `public/` et décrites dans `gallery` avec dimensions et texte alternatif. Elles utilisent `next/image`.
 
-Les textes sont provisoires, fondés uniquement sur les informations fournies et l'ancien portfolio. Les illustrations CSS/SVG sont décoratives : ni captures produit, ni pochettes musicales officielles. Aucune scène WebGL, aucun autoplay.
+Les textes sont provisoires, fondés uniquement sur les informations fournies et l'ancien portfolio. Les illustrations CSS/SVG sont décoratives : ni captures produit, ni pochettes musicales officielles. Scène WebGL facultative sur l’accueil, fallback CSS/SVG, aucun autoplay. Voir [le guide cinématique](cinematic.md) et [les performances](performance/README.md).
 
 ## Langues, thèmes et navigation
 
@@ -68,3 +68,7 @@ Les fichiers MDX sont du code de confiance relu en PR : ne jamais compiler de MD
 Conserver les faits éditoriaux séparés de la présentation. Pas de mesure, de stack, de partenaire ou de lien inventé. Imports `@/` pour l'application ; `.ts` explicite pour les modules exécutés aussi par Node. Champs éditoriaux bilingues `Record<Locale,string>`. Validation des paramètres avant accès aux données ; vrai statut 404 si inconnu. N'ajouter `use client` qu'à la frontière d'interaction. Liens et boutons sémantiques, focus visible, aucun bloc vide.
 
 Commits conventionnels contrôlés par commitlint ; lint-staged lance Oxlint/Oxfmt sur les fichiers concernés. CodeQL et dependency review sont conservés. Les changements passent par une PR ; aucune fusion automatique.
+
+## Expérience cinématique
+
+Voir [architecture, lots et garde-fous](cinematic.md). Les profils et mesures avant/après sont conservés dans [performance/](performance/README.md).
