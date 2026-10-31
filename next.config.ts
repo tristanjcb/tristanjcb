@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 const config: NextConfig = {
   poweredByHeader: false,
+  outputFileTracingIncludes: { '/*': ['./src/content/articles/**/*.mdx'] },
   experimental: { globalNotFound: true },
   async redirects() {
     return [

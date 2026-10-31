@@ -59,3 +59,21 @@ test('local MDX compiles headings, GFM and highlighted code', async () => {
   assert.match(html, /data-language="ts"/);
   assert.match(html, /--shiki-dark/);
 });
+test('an omitted serverless content directory is an empty journal; other filesystem errors remain visible', async () => {
+  const { articleNames } = await import('../../src/lib/content-files.ts');
+  const fs = await import('node:fs/promises');
+  const os = await import('node:os');
+  const path = await import('node:path');
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'aurora-content-'));
+  try {
+    assert.deepEqual(await articleNames(path.join(directory, 'not-deployed')), []);
+    await fs.writeFile(path.join(directory, 'article.mdx'), 'A local test fixture');
+    await fs.writeFile(path.join(directory, '.gitkeep'), '');
+    assert.deepEqual(await articleNames(directory), ['article.mdx']);
+    await assert.rejects(() => articleNames(path.join(directory, 'article.mdx')), {
+      code: 'ENOTDIR',
+    });
+  } finally {
+    await fs.rm(directory, { recursive: true, force: true });
+  }
+});

@@ -6,13 +6,13 @@ export default defineConfig({
   workers: 2,
   retries: process.env.CI ? 1 : 0,
   reporter: 'list',
-  use: { baseURL: external ?? 'http://127.0.0.1:3000', trace: 'retain-on-failure' },
+  use: { baseURL: external ?? 'http://127.0.0.1:3100', trace: 'retain-on-failure' },
   webServer: external
     ? undefined
     : {
-        command: 'pnpm start',
-        url: 'http://127.0.0.1:3000/fr',
-        reuseExistingServer: !process.env.CI,
+        command: 'pnpm start --port 3100',
+        url: 'http://127.0.0.1:3100/fr',
+        reuseExistingServer: false,
         timeout: 60000,
       },
   projects: [

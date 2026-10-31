@@ -59,8 +59,10 @@ test('project filter, empty journal, 404s and historical redirects', async ({ pa
   await expect(page.locator('article.project-card')).toHaveCount(2);
   await expect(page.getByRole('heading', { name: 'Kresov', exact: true })).toHaveCount(0);
   expect((await page.goto('/en/projects/dev/unknown'))?.status()).toBe(404);
+  await expect(page.locator('h1')).toContainText('This page does not exist.');
   expect((await page.goto('/xx'))?.status()).toBe(404);
   expect((await page.goto('/en/blog/no-invented-article'))?.status()).toBe(404);
+  await expect(page.locator('h1')).toContainText('This page does not exist.');
   for (const [source, target] of Object.entries({
     about: '/en/me',
     partners: '/en/sponsors',

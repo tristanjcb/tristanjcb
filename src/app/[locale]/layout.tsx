@@ -1,3 +1,4 @@
+export const dynamicParams = false;
 import type { Metadata } from 'next';
 import { Inter, Space_Grotesk, IBM_Plex_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';

@@ -4,9 +4,10 @@ import matter from 'gray-matter';
 import { cache } from 'react';
 import { articleSchema, readingMinutes, headingId } from './article-schema';
 import type { Locale } from './i18n';
+import { articleNames } from './content-files';
 export const getArticles = cache(async (locale?: Locale) => {
   const directory = path.join(process.cwd(), 'src/content/articles');
-  const names = (await fs.readdir(directory)).filter((name) => name.endsWith('.mdx'));
+  const names = await articleNames(directory);
   const articles = await Promise.all(
     names.map(async (name) => {
       const { data, content } = matter(await fs.readFile(path.join(directory, name), 'utf8'));

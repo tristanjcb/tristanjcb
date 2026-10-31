@@ -1,3 +1,4 @@
+export const dynamicParams = false;
 import { copy } from '@/content/copy';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
