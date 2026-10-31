@@ -2,6 +2,7 @@
 import { Icon } from '@/components/icons/Icon';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Navigation.module.scss';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
@@ -122,10 +123,20 @@ export function Navigation({
       <header className={styles.header}>
         <Link
           href={`/${locale}`}
-          className="wordmark"
+          className="wordmark navbar-wordmark"
           aria-label={locale === 'fr' ? 'Tristan — accueil' : 'Tristan — home'}
         >
-          Tristan<span className="accent">.</span>
+          <Image
+            src="/brand/tristan-mark.webp"
+            width={192}
+            height={170}
+            alt=""
+            className="navbar-mark"
+            priority
+          />
+          <span aria-hidden="true">
+            ristan<span className="accent">.</span>
+          </span>
         </Link>
         <nav
           aria-label={locale === 'fr' ? 'Navigation principale' : 'Main navigation'}

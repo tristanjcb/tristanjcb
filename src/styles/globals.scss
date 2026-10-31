@@ -1410,3 +1410,16 @@ p {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
+
+.navbar-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.025em;
+  flex-shrink: 0;
+}
+.navbar-mark {
+  width: 0.92em;
+  height: 0.82em;
+  object-fit: contain;
+  flex-shrink: 0;
+}

@@ -72,3 +72,7 @@ Commits conventionnels contrôlés par commitlint ; lint-staged lance Oxlint/Oxf
 ## Expérience cinématique
 
 Voir [architecture, lots et garde-fous](cinematic.md). Les profils et mesures avant/après sont conservés dans [performance/](performance/README.md).
+
+### Logo et icônes
+
+Les deux fichiers `public/Logo Tristan*.png` sont les sources fournies par Tristan. `node scripts/brand-assets.mjs` régénère le symbole transparent optimisé de la navbar, le favicon multi-tailles, l'icône PNG et l'icône Apple avec fond. Le script réutilise Sharp fourni par Next.js, sans dépendance supplémentaire. Les conventions de fichiers App Router déclarent automatiquement les icônes dans les pages FR/EN.
