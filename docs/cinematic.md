@@ -31,7 +31,7 @@ Le contenu est SSR et reste lisible indépendamment de la scène. La 3D enrichit
 
 ## Garde-fous
 
-- La 3D se charge sur mobile comme sur desktop. Le mode statique conserve le canvas et rend une image fixe ; thème, chapitre et paramètres déclenchent un nouveau rendu ponctuel. Aucun RAF permanent dans ce mode.
+- La 3D se charge sur mobile comme sur desktop. Le mode statique conserve le canvas et rend une image fixe ; thème et paramètres déclenchent un rendu ponctuel. Un changement de chapitre au défilement anime la transformation pendant une seconde, puis arrête la boucle. Les rotations et pulsations continues restent figées. Aucun RAF permanent dans ce mode.
 - `prefers-reduced-motion` sélectionne initialement la 3D fixe. Une activation explicite permet de l'animer. Cette préférence adoucit séparément les déplacements de l'interface ; le bouton statique ne modifie jamais les animations de l'interface.
 - Scène différée de 700 ms. Échec WebGL, import impossible, perte de contexte ou préparation dépassant quinze secondes : fallback CSS/SVG. Aucun rechargement automatique en boucle.
 - Antialiasing actif et DPR natif plafonné à 2 sur les deux profils ; géométrie 48/64 segments, 80/200 particules et cadence 30/60 images/s selon le profil.

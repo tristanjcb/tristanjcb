@@ -135,6 +135,8 @@ export function createAurora(
     lastStats = 0,
     submitted = 0,
     slow = 0;
+  let transitionUntil = 0;
+  let renderedChapter = state.current.chapter;
   let fps = tier.fps;
   let downgraded = false;
   const resize = () => {
@@ -166,9 +168,15 @@ export function createAurora(
     if (disposed || !active) return;
     frame = requestAnimationFrame(draw);
     if (now - previous < 1000 / fps - 0.6) return;
-    renderFrame(now, false);
+    const still = !state.current.motion;
+    const transitioning = still && now < transitionUntil;
+    renderFrame(now, still, transitioning);
+    if (still && !transitioning) {
+      stop();
+      host.dataset.rendering = 'static';
+    }
   }
-  function renderFrame(now: number, still: boolean) {
+  function renderFrame(now: number, still: boolean, transitioning = false) {
     const delta = Math.min((now - previous) / 1000, 0.06);
     previous = now;
     if (!still) elapsed += delta;
@@ -176,7 +184,7 @@ export function createAurora(
     const current = state.current;
     const settings = sceneSettings(current.energy, current.density, current.palette);
     const chapter = chapters.indexOf(current.chapter);
-    const blend = still ? 1 : 1 - Math.exp(-delta * 3);
+    const blend = still && !transitioning ? 1 : 1 - Math.exp(-delta * 5);
     for (let i = 0; i < 4; i++)
       mesh.morphTargetInfluences![i] +=
         ((chapter === i + 1 ? 1 : 0) - mesh.morphTargetInfluences![i]) * blend;
@@ -248,11 +256,14 @@ export function createAurora(
       stop();
       return;
     }
-    if (state.current.motion) {
+    const chapterChanged = renderedChapter !== state.current.chapter;
+    renderedChapter = state.current.chapter;
+    if (chapterChanged && !state.current.motion) transitionUntil = performance.now() + 1000;
+    if (state.current.motion || performance.now() < transitionUntil) {
+      host.dataset.rendering = state.current.motion ? 'active' : 'transitioning';
       if (!active) {
         active = true;
         previous = performance.now();
-        host.dataset.rendering = 'active';
         frame = requestAnimationFrame(draw);
       }
     } else {

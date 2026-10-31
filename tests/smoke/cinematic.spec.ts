@@ -103,6 +103,17 @@ test('retina 3D, chapter transforms, static canvas retained, controls and contex
   const frames = await host.getAttribute('data-frames');
   await page.waitForTimeout(160);
   expect(await host.getAttribute('data-frames')).toBe(frames);
+  await page.locator('#music').scrollIntoViewIfNeeded();
+  await expect(journey).toHaveAttribute('data-chapter', 'music');
+  await expect(host).toHaveAttribute('data-rendering', 'transitioning');
+  const morphFrames = Number(await host.getAttribute('data-frames'));
+  await expect
+    .poll(async () => Number(await host.getAttribute('data-frames')))
+    .toBeGreaterThan(morphFrames);
+  await expect(host).toHaveAttribute('data-rendering', 'static');
+  const settledFrames = await host.getAttribute('data-frames');
+  await page.waitForTimeout(180);
+  expect(await host.getAttribute('data-frames')).toBe(settledFrames);
   await page.reload();
   expect(await waitForScene(page)).toBe(true);
   await expect(host).toHaveAttribute('data-rendering', 'static');
