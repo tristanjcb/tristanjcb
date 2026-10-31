@@ -1414,12 +1414,13 @@ p {
 .navbar-wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 0.025em;
+  gap: 0;
   flex-shrink: 0;
 }
 .navbar-mark {
-  width: 0.92em;
-  height: 0.82em;
+  width: 1.05em;
+  height: 0.93em;
+  margin-right: -0.24em;
   object-fit: contain;
   flex-shrink: 0;
 }
