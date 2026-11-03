@@ -62,5 +62,3 @@ Coming soon.
 ### This repository
 
 Source for my bilingual portfolio: **Next.js · React · TypeScript · SCSS Modules · Three.js**.
-
-[Development](docs/README.md) · [Content](docs/content.md) · [Deployment](docs/deployment.md) · [Sponsor API setup](docs/sponsors.md) · [License](LICENSE)
