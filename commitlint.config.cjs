@@ -1,26 +1,26 @@
 /** @type {import('@commitlint/types').UserConfig} */
 module.exports = {
-    extends: ['@commitlint/config-angular'],
+  extends: ['@commitlint/config-angular'],
 
-    rules: {
-        'type-enum': [
-            2,
-            'always',
-            [
-                'build',
-                'chore',
-                'ci',
-                'docs',
-                'feat',
-                'fix',
-                'perf',
-                'refactor',
-                'revert',
-                'style',
-                'test',
-            ],
-        ],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      [
+        'build',
+        'chore',
+        'ci',
+        'docs',
+        'feat',
+        'fix',
+        'perf',
+        'refactor',
+        'revert',
+        'style',
+        'test',
+      ],
+    ],
 
-        'scope-case': [0, 'always'],
-    },
+    'scope-case': [0, 'always'],
+  },
 };

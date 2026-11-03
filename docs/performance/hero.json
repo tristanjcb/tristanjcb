@@ -1,0 +1,37 @@
+{
+  "label": "hero",
+  "base": "http://127.0.0.1:3100",
+  "note": "Lab measurements, cold contexts/profile; see run counts. Interaction timing is a lab sample, not field INP. JS gzip is computed over fetched scripts. Heap is JS only; GPU memory is not exposed.",
+  "results": [
+    {
+      "profile": "desktop",
+      "run": 1,
+      "lcp": 60,
+      "cls": 0.0005433345389660493,
+      "longTaskMs": 249,
+      "interactionMs": 72,
+      "loadMs": 56.5,
+      "resources": 430533,
+      "frameP95Ms": 16.800000000000182,
+      "heapBytes": 10000000,
+      "canvas": true,
+      "javaScriptRaw": 1090977,
+      "javaScriptGzip": 303492
+    },
+    {
+      "profile": "mobile-4x-slow4g",
+      "run": 1,
+      "lcp": 616,
+      "cls": 0.000163181959939389,
+      "longTaskMs": 18,
+      "interactionMs": 56,
+      "loadMs": 1687.9000000059605,
+      "resources": 282616,
+      "frameP95Ms": 16.80000000000109,
+      "heapBytes": 10000000,
+      "canvas": false,
+      "javaScriptRaw": 516552,
+      "javaScriptGzip": 159712
+    }
+  ]
+}

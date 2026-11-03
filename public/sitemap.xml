@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    <url>
-        <loc>https://www.tristan.kresov.com/</loc>
-        <priority>1.0</priority>
-    </url>
-
-    <url>
-        <loc>https://www.tristan.kresov.com/projects</loc>
-        <priority>0.9</priority>
-    </url>
-
-    <url>
-        <loc>https://www.tristan.kresov.com/about</loc>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://www.tristan.kresov.com/contact</loc>
-        <priority>0.8</priority>
-    </url>
-
+  <url><loc>https://tristan.kresov.com/fr</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/me</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/projects</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/projects/dev</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/projects/music</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/projects/creator</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/blog</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/sponsors</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/contact</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/projects/dev/kresov</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/projects/dev/dockerscope</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/projects/music/cursed</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/projects/music/ep-2</loc></url>
+  <url><loc>https://tristan.kresov.com/fr/projects/creator/coming-soon</loc></url>
+  <url><loc>https://tristan.kresov.com/en</loc></url>
+  <url><loc>https://tristan.kresov.com/en/me</loc></url>
+  <url><loc>https://tristan.kresov.com/en/projects</loc></url>
+  <url><loc>https://tristan.kresov.com/en/projects/dev</loc></url>
+  <url><loc>https://tristan.kresov.com/en/projects/music</loc></url>
+  <url><loc>https://tristan.kresov.com/en/projects/creator</loc></url>
+  <url><loc>https://tristan.kresov.com/en/blog</loc></url>
+  <url><loc>https://tristan.kresov.com/en/sponsors</loc></url>
+  <url><loc>https://tristan.kresov.com/en/contact</loc></url>
+  <url><loc>https://tristan.kresov.com/en/projects/dev/kresov</loc></url>
+  <url><loc>https://tristan.kresov.com/en/projects/dev/dockerscope</loc></url>
+  <url><loc>https://tristan.kresov.com/en/projects/music/cursed</loc></url>
+  <url><loc>https://tristan.kresov.com/en/projects/music/ep-2</loc></url>
+  <url><loc>https://tristan.kresov.com/en/projects/creator/coming-soon</loc></url>
 </urlset>
