@@ -44,7 +44,6 @@ export const ui = {
     'The first stories will find their place here. Less noise, more things worth sharing.',
   ),
   theme: text('Thème', 'Theme'),
-  system: text('Système', 'System'),
   light: text('Clair', 'Light'),
   dark: text('Sombre', 'Dark'),
   cta: text('Et si on créait\nquelque chose ?', 'What could we\nmake together?'),

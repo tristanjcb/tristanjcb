@@ -1424,3 +1424,88 @@ p {
   object-fit: contain;
   flex-shrink: 0;
 }
+
+.support-platforms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.support-platform {
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+}
+.support-platform > .icon {
+  width: 32px;
+  height: 32px;
+  color: var(--accent);
+}
+.support-platform h2 {
+  font-size: clamp(26px, 3vw, 36px);
+  margin: 24px 0 16px;
+}
+.support-platform p {
+  line-height: 1.7;
+}
+.support-status {
+  margin: 28px 0;
+  padding: 20px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+}
+.supporter-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 28px 0;
+}
+.supporter-list li {
+  padding: 0;
+}
+.supporter-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--accent);
+  font-size: 26px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+.supporter-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+a.supporter-avatar {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+a.supporter-avatar:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  a.supporter-avatar:hover {
+    transform: none;
+  }
+}
+.support-privacy {
+  margin: 24px 0 64px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+@media (max-width: 700px) {
+  .support-platforms {
+    grid-template-columns: 1fr;
+  }
+}

@@ -13,8 +13,8 @@ export function SocialLinks({ locale }: { locale: Locale }) {
           title={
             social.placeholder
               ? locale === 'fr'
-                ? `${social.label} — profil à venir`
-                : `${social.label} — profile coming soon`
+                ? `${social.label} / profil à venir`
+                : `${social.label} / profile coming soon`
               : social.label
           }
         >

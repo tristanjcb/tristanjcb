@@ -3,7 +3,7 @@ import { Icon } from '@/components/icons/Icon';
 
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { useTheme } from 'next-themes';
-import { cinematic, narrativeCode } from '@/content/cinematic';
+import { cinematic } from '@/content/cinematic';
 import { type Locale } from '@/lib/i18n';
 import { chapters, initialScene, sceneSettings, type Chapter } from './model';
 import { setMode, useReducedMotion, useVisualMode } from './preferences';
@@ -30,9 +30,11 @@ const JourneyContext = createContext<{
 export function CinematicJourney({
   children,
   locale,
+  highlightedCode,
 }: {
   children: React.ReactNode;
   locale: Locale;
+  highlightedCode: React.ReactNode;
 }) {
   const root = useRef<HTMLDivElement>(null),
     host = useRef<HTMLDivElement>(null),
@@ -195,10 +197,8 @@ export function CinematicJourney({
           <div className={styles.sticky}>
             <Fallback />
             <div ref={host} className={styles.canvas} data-scene-host />
-            {displayedStatus === 'ready' && (
-              <span className={styles.gpuLabel}>TRISTAN / REALTIME MATERIAL</span>
-            )}
-            <FloatingIDE locale={locale} />
+            {displayedStatus === 'ready' && <span className={styles.gpuLabel}></span>}
+            <FloatingIDE locale={locale} highlightedCode={highlightedCode} />
           </div>
         </div>
         <div className={styles.content}>{children}</div>
@@ -206,7 +206,13 @@ export function CinematicJourney({
     </JourneyContext.Provider>
   );
 }
-function FloatingIDE({ locale }: { locale: Locale }) {
+function FloatingIDE({
+  locale,
+  highlightedCode,
+}: {
+  locale: Locale;
+  highlightedCode: React.ReactNode;
+}) {
   const { chapter, phase } = useContext(JourneyContext);
   const kind = chapter === 'music' ? 'audio' : chapter === 'creator' ? 'creator' : 'code';
   return (
@@ -236,17 +242,7 @@ function FloatingIDE({ locale }: { locale: Locale }) {
         </span>
       </div>
       {kind === 'code' ? (
-        <pre>
-          <code>
-            {narrativeCode.map((line, index) => (
-              <span key={line}>
-                <i>{index + 1}</i>
-                {line}
-                {'\n'}
-              </span>
-            ))}
-          </code>
-        </pre>
+        highlightedCode
       ) : kind === 'audio' ? (
         <div className={styles.audio}>
           <div className={styles.wave}>

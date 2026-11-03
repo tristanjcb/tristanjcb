@@ -11,13 +11,16 @@ const strokes = {
   mail: 'M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm-1 1 9 7 9-7',
   message:
     'M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-2 2v-10.5A8.5 8.5 0 0 1 10.5 3h2a8.5 8.5 0 0 1 8.5 8.5ZM7 10h10M7 14h6',
-  linkedin:
-    'M5 9v11M5 5v.01M10 20V9h4v2c1-3 7-3 7 2v7M14 11v9M3 2h18a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1',
   reset: 'M3 10a9 9 0 1 1 1 8M3 3v7h7',
 } as const;
-export type IconName = keyof typeof strokes | keyof typeof brandPaths;
+const filledMarks = {
+  linkedin:
+    'M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2ZM5 9h3v10H5V9Zm1.5-4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2ZM10 9h3v1.4c.6-1 1.6-1.7 3-1.7 2.7 0 3.5 1.7 3.5 4.3v6h-3v-5.4c0-1.4-.3-2.3-1.6-2.3-1.4 0-1.9 1-1.9 2.3V19h-3V9Z',
+} as const;
+export type IconName = keyof typeof strokes | keyof typeof brandPaths | keyof typeof filledMarks;
 export function Icon({ name, className }: { name: IconName; className?: string }) {
-  const brand = name in brandPaths;
+  const localFill = name in filledMarks;
+  const brand = name in brandPaths || localFill;
   return (
     <svg
       className={`icon ${className ?? ''}`}
@@ -25,6 +28,7 @@ export function Icon({ name, className }: { name: IconName; className?: string }
       width="20"
       height="20"
       fill={brand ? 'currentColor' : 'none'}
+      fillRule={localFill ? 'evenodd' : undefined}
       stroke={brand ? 'none' : 'currentColor'}
       strokeWidth={2.1}
       strokeLinecap="round"
@@ -34,9 +38,11 @@ export function Icon({ name, className }: { name: IconName; className?: string }
     >
       <path
         d={
-          brand
-            ? brandPaths[name as keyof typeof brandPaths]
-            : strokes[name as keyof typeof strokes]
+          localFill
+            ? filledMarks[name as keyof typeof filledMarks]
+            : brand
+              ? brandPaths[name as keyof typeof brandPaths]
+              : strokes[name as keyof typeof strokes]
         }
       />
     </svg>

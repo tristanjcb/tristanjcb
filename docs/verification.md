@@ -1,4 +1,4 @@
-# Bilan de vérification — 31 octobre 2026
+# Bilan de vérification / 31 octobre 2026
 
 Branche : `aurora-foundation`. Main et sa production n'ont pas été modifiés.
 
@@ -27,7 +27,7 @@ Ce contrôle a révélé une erreur serveur sur les slugs inconnus. Le chargemen
 
 Après correctif : build, types, lint et format réussis ; 7 tests unitaires et 10 tests navigateur réussis. Les smoke tests locaux utilisent désormais un serveur dédié au port 3100 afin de ne pas réutiliser un serveur de développement déjà ouvert. La vérification du nouveau déploiement Vercel suit ce correctif ; les parcours authentifiés dans le navigateur ne doivent pas être confondus avec une exécution Playwright distante sans session.
 
-## Prompt 03 — Cinematic Aurora
+## Prompt 03 / Cinematic Aurora
 
 La scène Three.js, le fallback opalescent, les cinq états de matière, le Floating IDE, Explore, Curtain et les micro-interactions sont implémentés. Les modules, lots et limites figurent dans `cinematic.md` ; les mesures de référence, intermédiaires et finales sont dans `performance/`.
 
@@ -42,3 +42,11 @@ La transparence des ornements a été corrigée après inspection des captures p
 Les anciens résultats ci-dessus décrivent la version précédente. La révision conserve la 3D en mode statique et sur mobile, indépendamment des animations de l’interface. Thème animé, typographie renforcée, marque Tristan, Sponsors dans la navigation, icônes SVG et destinations sociales fournies par Tristan. YouTube et TikTok pointent volontairement vers leurs plateformes sans identifiant. Les nouvelles mesures et régressions figurent dans `performance/revision.json` et son README.
 
 Vérifications locales de cette révision : build, Oxlint, Oxfmt, typecheck, 11 tests unitaires et 22 tests navigateur réussis, aucun scénario ignoré. Captures Contact et Hero produites pour desktop et mobile ; framebuffer Retina, canvas conservé et immobile, reprise de mouvement, perte WebGL, thèmes et liens sociaux vérifiés.
+
+## Finitions / 3 novembre 2026
+
+README de profil renouvelé avec bannière et logo, liens sociaux confirmés et badges Shields.io. Listes de soutiens via API serveur avec avatars GitHub publics ; données réelles vérifiées localement après ajout de read:org. Le cas Buy Me a Coffee `No supporters` est traité comme liste vide. Coloration TypeScript du Floating IDE générée côté serveur avec Shiki.
+
+Deux thèmes uniquement : sombre par défaut, clair explicite conservé, anciennes préférences système migrées avant initialisation. Le titre de l’accueil FR/EN et des métadonnées de partage est exactement `Tristan Jacob / Portfolio`. Tirets typographiques remplacés par `/`.
+
+Vérifications exécutées : format, lint, typecheck, build, 16 tests unitaires et 26 tests navigateur réussis sur le build de production local. Le test de persistance attend le changement de thème effectif avant rechargement, puisque View Transition applique sa mise à jour de façon asynchrone. Les jetons de `.env.local` restent exclus de Git. Pas de nouvelle validation Vercel dans ce lot, qui est committé localement sans push.

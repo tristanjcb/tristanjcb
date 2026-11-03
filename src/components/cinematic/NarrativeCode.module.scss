@@ -1,0 +1,6 @@
+.code .token {
+  color: var(--shiki-light, var(--text));
+}
+:global([data-theme='dark']) .code .token {
+  color: var(--shiki-dark, var(--text));
+}

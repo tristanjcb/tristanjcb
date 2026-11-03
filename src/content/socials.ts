@@ -14,7 +14,7 @@ export const socials: SocialLink[] = [
   { label: 'X', href: 'https://www.x.com/Tristan__Jcb', icon: 'x' },
   { label: 'Instagram', href: 'https://instagram.com/tristanjcb', icon: 'instagram' },
   { label: 'Pinterest', href: 'https://pin.it/3dX6XAOtK', icon: 'pinterest' },
-  { label: 'TikTok', href: 'https://www.tiktok.com/', icon: 'tiktok', placeholder: true },
-  { label: 'YouTube', href: 'https://www.youtube.com/', icon: 'youtube', placeholder: true },
+  { label: 'TikTok', href: 'https://www.tiktok.com/@tristanjcb', icon: 'tiktok' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@tristanjcb', icon: 'youtube' },
   { label: 'Discord', href: 'https://discord.com/users/705425854825496656', icon: 'discord' },
 ];

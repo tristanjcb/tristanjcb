@@ -60,6 +60,8 @@ export default async function Layout({
   return (
     <html
       lang={locale}
+      data-theme="dark"
+      style={{ colorScheme: 'dark' }}
       suppressHydrationWarning
       className={`${inter.variable} ${grotesk.variable} ${mono.variable}`}
     >

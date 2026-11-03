@@ -22,7 +22,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <SocialLinks locale={locale} />
         </div>
         <p className="colophon">
-          CODE · SOUND · STORIES <span>BUILT WITH INTENTION.</span>
+          Copyright 2026 © Tristan Jacob<span>BUILT WITH ❤.</span>
         </p>
       </div>
     </footer>

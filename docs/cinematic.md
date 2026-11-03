@@ -1,4 +1,4 @@
-# Cinematic Aurora — architecture et limites
+# Cinematic Aurora / architecture et limites
 
 Le contenu est SSR et reste lisible indépendamment de la scène. La 3D enrichit l'accueil ; les pages internes ne la chargent pas. Aucun shader externe, modèle 3D téléchargé, moteur audio, post-traitement ou code visiteur exécutable.
 

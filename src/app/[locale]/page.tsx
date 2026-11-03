@@ -1,3 +1,4 @@
+import { NarrativeCode } from '@/components/cinematic/NarrativeCode';
 import { Icon } from '@/components/icons/Icon';
 import { copy } from '@/content/copy';
 import Link from 'next/link';
@@ -11,12 +12,15 @@ import { metadata } from '@/lib/seo';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return metadata(
-    locale,
-    '',
-    'Code, Sound, Stories',
-    copy.page.aurora_tristan_s_world_of_development[locale],
-  );
+  return {
+    ...metadata(
+      locale,
+      '',
+      'Tristan Jacob / Portfolio',
+      copy.page.aurora_tristan_s_world_of_development[locale],
+    ),
+    title: { absolute: 'Tristan Jacob / Portfolio' },
+  };
 }
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -24,12 +28,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const articles = await getArticles(locale);
   return (
     <>
-      <CinematicJourney locale={locale}>
+      <CinematicJourney locale={locale} highlightedCode={<NarrativeCode />}>
         <section className="container hero" data-universe="origin" id="origin">
           <div className="hero-copy">
             <p className="eyebrow">
               <span className="status-dot" />
-              TRISTAN JACOB / PERSONAL UNIVERSE
+              Loading...
             </p>
             <h1>
               Three worlds.
@@ -45,11 +49,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 <Icon name="chevron-right" />
               </span>
             </Link>
-            <div className="hero-index">
-              <span>01 — DEVELOPMENT</span>
-              <span>02 — MUSIC</span>
-              <span>03 — CREATOR</span>
-            </div>
           </div>
           <div aria-hidden="true" />
           <UniverseControls locale={locale} />
@@ -137,7 +136,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <div className="universe-aside">
               <p>{copy.page.sharing_the_process_the_detours_and[locale]}</p>
               <Link className="text-link" href={`/${locale}/projects/creator`}>
-                {ui.creator[locale]} — {ui.soon[locale]} <Icon name="chevron-right" />
+                {ui.creator[locale]} / {ui.soon[locale]} <Icon name="chevron-right" />
               </Link>
             </div>
           </div>
@@ -145,7 +144,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <section className="container section" data-universe="projects">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">SELECTED / 001—005</p>
+              <p className="eyebrow">SELECTED / 001/005</p>
               <h2>{copy.page.selected_fragments[locale]}</h2>
             </div>
             <Link className="text-link" href={`/${locale}/projects`}>

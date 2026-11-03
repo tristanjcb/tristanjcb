@@ -1,6 +1,11 @@
 import type { NextConfig } from 'next';
 const config: NextConfig = {
   poweredByHeader: false,
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'avatars.githubusercontent.com', pathname: '/**' },
+    ],
+  },
   outputFileTracingIncludes: { '/*': ['./src/content/articles/**/*.mdx'] },
   experimental: { globalNotFound: true },
   async redirects() {

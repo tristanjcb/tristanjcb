@@ -19,10 +19,6 @@ export function Fallback() {
           />
         ))}
       </svg>
-      <span className={styles.artLabel}>
-        T / ∞<br />
-        LIGHT AS A MATERIAL
-      </span>
     </div>
   );
 }

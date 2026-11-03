@@ -93,3 +93,40 @@ test('contact creates a mailto draft without submitting to a server', async ({ p
     page.getByText('Your email application was requested.', { exact: false }),
   ).toBeVisible();
 });
+
+test('dark defaults ignore OS color scheme, migrate system and preserve explicit light', async ({
+  page,
+}) => {
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.goto('/fr');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await page.getByRole('button', { name: 'Menu', exact: true }).click();
+  const select = page.getByRole('combobox', { name: 'Thème', exact: true });
+  await expect(select.locator('option')).toHaveCount(2);
+  await expect(select).toHaveValue('dark');
+  await select.selectOption('light');
+  // View Transition invokes the theme update asynchronously; await the actual selection.
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('aurora-theme'))).toBe('light');
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await page.evaluate(() => localStorage.setItem('aurora-theme', 'system'));
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  expect(await page.evaluate(() => localStorage.getItem('aurora-theme'))).toBe('dark');
+});
+
+test('homepage browser and social titles use the exact portfolio title', async ({ page }) => {
+  for (const locale of ['fr', 'en']) {
+    await page.goto(`/${locale}`);
+    await expect(page).toHaveTitle('Tristan Jacob / Portfolio');
+    await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
+      'content',
+      'Tristan Jacob / Portfolio',
+    );
+    await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute(
+      'content',
+      'Tristan Jacob / Portfolio',
+    );
+  }
+});

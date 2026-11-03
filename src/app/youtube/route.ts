@@ -1,7 +1,7 @@
 import { socials } from '@/content/socials';
 export function GET() {
-  const configured =
-    process.env.YOUTUBE_URL ?? socials.find((social) => social.icon === 'youtube')!.href;
+  const profile = socials.find((social) => social.icon === 'youtube')!.href;
+  const configured = process.env.YOUTUBE_URL ?? profile;
   try {
     const url = new URL(configured);
     if (
@@ -10,7 +10,7 @@ export function GET() {
     )
       return Response.redirect(url, 307);
   } catch {
-    /* Keep the user-approved platform placeholder for invalid configuration. */
+    /* Use the confirmed profile if the environment override is invalid. */
   }
-  return Response.redirect('https://www.youtube.com/', 307);
+  return Response.redirect(profile, 307);
 }

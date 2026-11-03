@@ -196,7 +196,7 @@ test('Tristan branding, SVG icons, approved social destinations and no text arro
   ).toHaveAttribute('href', 'https://www.x.com/Tristan__Jcb');
   await expect(
     page.locator('main .social-links').getByRole('link', { name: 'YouTube', exact: true }),
-  ).toHaveAttribute('href', 'https://www.youtube.com/');
+  ).toHaveAttribute('href', 'https://www.youtube.com/@tristanjcb');
   await expect(page.locator('footer .social-links a')).toHaveCount(10);
   await page.screenshot({ path: info.outputPath('contact-icons.png'), fullPage: true });
 });

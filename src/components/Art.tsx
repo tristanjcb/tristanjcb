@@ -36,14 +36,14 @@ export function Art({
       <span className={styles.annotation}>
         T / {variant === 'origin' ? 'ORIGIN' : variant.toUpperCase()}
         <br />
-        CODE / SOUND / STORIES
+        Loading...
         <br />
-        DIGITAL EXPLORATIONS
+        {variant === 'origin' ? 'ORIGIN' : variant.toUpperCase()}.exe
       </span>
       <span className={styles.coordinate}>
-        FIG. 001
+        A PERSON
         <br />
-        THREE WORLDS. ONE ORIGIN.
+        ONE PASSION, ONE PROJECT
       </span>
     </div>
   );

@@ -28,7 +28,7 @@ export function Navigation({
   const menuButton = useRef<HTMLButtonElement>(null);
   const searchButton = useRef<HTMLButtonElement>(null);
   const [query, setQuery] = useState('');
-  const [theme, setSelectedTheme] = useState('system');
+  const [theme, setSelectedTheme] = useState('dark');
   const open = (kind: 'menu' | 'search') => {
     const dialog = kind === 'menu' ? menuRef.current : searchRef.current;
     dialog?.showModal();
@@ -45,7 +45,7 @@ export function Navigation({
   };
   useEffect(() => {
     const stored = localStorage.getItem('aurora-theme');
-    if (stored && ['system', 'light', 'dark'].includes(stored)) {
+    if (stored && ['dark', 'light'].includes(stored)) {
       // Synchronize a preference owned by browser storage after hydration.
       // oxlint-disable-next-line react/set-state-in-effect
       setSelectedTheme(stored);
@@ -109,7 +109,7 @@ export function Navigation({
             setSelectedTheme(event.target.value);
           }}
         >
-          {(['system', 'light', 'dark'] as const).map((value) => (
+          {(['dark', 'light'] as const).map((value) => (
             <option key={value} value={value}>
               {ui[value][locale]}
             </option>
@@ -124,7 +124,7 @@ export function Navigation({
         <Link
           href={`/${locale}`}
           className="wordmark navbar-wordmark"
-          aria-label={locale === 'fr' ? 'Tristan — accueil' : 'Tristan — home'}
+          aria-label={locale === 'fr' ? 'Tristan / accueil' : 'Tristan / home'}
         >
           <Image
             src="/brand/tristan-mark.webp"

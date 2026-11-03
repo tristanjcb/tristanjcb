@@ -10,12 +10,7 @@ export function animateTheme(
 ) {
   const root = document.documentElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const next =
-    value === 'system'
-      ? matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light'
-      : value;
+  const next = value;
   if (!['light', 'dark'].includes(next)) return;
   transition?.skipTransition();
   clearTimeout(cleanup);

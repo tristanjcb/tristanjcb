@@ -1,4 +1,4 @@
-# Aurora — guide technique
+# Aurora / guide technique
 
 Portfolio Next.js App Router / React / TypeScript strict / SCSS Modules. Node **24.22.1** en local et en CI, pnpm **12.16.1**. Le README racine conserve sa fonction de profil GitHub.
 
@@ -11,7 +11,7 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Ouvrir http://127.0.0.1:3000/fr ou /en. Aucun secret nécessaire. `.env.example` documente l'unique option : la véritable URL YouTube, lorsqu'elle sera confirmée.
+Ouvrir http://127.0.0.1:3000/fr ou /en. Aucun secret nécessaire pour parcourir le site. `.env.example` documente les jetons privés optionnels pour les listes de soutiens et la surcharge éventuelle de l’URL YouTube. Voir [la configuration Sponsors](sponsors.md).
 
 ```sh
 pnpm lint
@@ -76,3 +76,11 @@ Voir [architecture, lots et garde-fous](cinematic.md). Les profils et mesures av
 ### Logo et icônes
 
 Les deux fichiers `public/Logo Tristan*.png` sont les sources fournies par Tristan. `node scripts/brand-assets.mjs` régénère le symbole transparent optimisé de la navbar, le favicon multi-tailles, l'icône PNG et l'icône Apple avec fond. Le script réutilise Sharp fourni par Next.js, sans dépendance supplémentaire. Les conventions de fichiers App Router déclarent automatiquement les icônes dans les pages FR/EN.
+
+### Soutiens GitHub et Buy Me a Coffee
+
+La page Sponsors récupère les données côté serveur avec un cache d’une heure. Voir [la configuration et les limites des API](sponsors.md), notamment la disponibilité de l’ancienne API Buy Me a Coffee. Aucun nom n’est à maintenir à la main ; les jetons privés sont à configurer une seule fois.
+
+### Thèmes
+
+Deux choix : sombre (par défaut) et clair. Aucun suivi du thème du système. Les anciens choix `system` sont migrés vers sombre avant l’initialisation du thème ; un choix clair explicite reste conservé.

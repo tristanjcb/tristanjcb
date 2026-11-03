@@ -31,7 +31,7 @@ for (const profile of ['desktop', 'mobile-4x-slow4g']) {
     if (row.gpu?.triangles) assert.ok(Number(row.gpu.triangles) <= 8000);
   }
   console.log(
-    `${profile}: measured budgets pass — LCP ${median(rows, 'lcp')} ms, JS gzip ${median(rows, 'javaScriptGzip')} bytes`,
+    `${profile}: measured budgets pass / LCP ${median(rows, 'lcp')} ms, JS gzip ${median(rows, 'javaScriptGzip')} bytes`,
   );
 }
 console.log('Checks saved lab reports only. Rerun the production benchmark after a scene change.');

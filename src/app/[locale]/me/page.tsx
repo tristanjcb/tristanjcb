@@ -49,12 +49,12 @@ export default async function Me({ params }: { params: Promise<{ locale: string 
           <p>{copy.me.i_work_with_typescript_node_js[locale]}</p>
           <div className="timeline">
             <div>
-              <p className="eyebrow">2025 — 2028</p>
+              <p className="eyebrow">2025 / 2028</p>
               <h3>{copy.me.professional_baccalaur_at_melec[locale]}</h3>
               <p>Saint-Joseph La Salle · {copy.me.electrical_and_connected_systems[locale]}</p>
             </div>
             <div>
-              <p className="eyebrow">2022 — 2025</p>
+              <p className="eyebrow">2022 / 2025</p>
               <h3>{copy.me.national_diploma_of_the_brevet[locale]}</h3>
             </div>
           </div>

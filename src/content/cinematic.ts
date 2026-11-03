@@ -31,24 +31,17 @@ export const cinematic = {
   identity: text('Identité', 'Identity'),
   code: text('L’idée prend forme', 'An idea takes shape'),
   ready: text('Explorer', 'Explore'),
-  codeLabel: text(
-    'Code narratif de démonstration, non exécutable',
-    'Narrative demonstration code, not executable',
-  ),
-  audioLabel: text(
-    'Interface audio décorative, sans lecture audio',
-    'Decorative audio interface, no audio playback',
-  ),
+  codeLabel: text('', ''),
+  audioLabel: text('', ''),
   creatorLabel: text('Panneau de composition décoratif', 'Decorative composition panel'),
-  noAudio: text('Aucun audio · aperçu visuel', 'No audio · visual preview'),
+  noAudio: text('EP.1: Cursed', 'No audio · visual preview'),
   surprise: text('Changer la constellation', 'Change the constellation'),
 };
 export const narrativeCode = [
   'const universe = {',
-  "  origin: 'curiosity',",
-  "  code: 'build with intention',",
+  "  origin: 'life',",
+  "  code: 'build with ❤',",
   "  sound: 'Vykev',",
   "  stories: 'still unfolding',",
   '};',
-  '// keep exploring.',
 ];

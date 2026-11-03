@@ -1,4 +1,4 @@
-# Performances — avant et après la 3D
+# Performances / avant et après la 3D
 
 Mesures du **31 octobre 2026**, sur le même poste, build Next.js de production. Trois contextes Chromium froids par profil pour la référence et la version complète. Desktop : 1440 × 1000, DPR 1. Mobile simulé : 390 × 844, CPU ×4, RTT 100 ms, téléchargement 200 000 octets/s. Une mesure intermédiaire par profil est conservée dans `hero.json` ; ce relevé unique est indicatif.
 

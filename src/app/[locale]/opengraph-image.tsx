@@ -29,7 +29,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
       </div>
       <div style={{ display: 'flex', fontSize: 22, color: '#a0a5b9' }}>
         {locale === 'fr' ? 'Développement / Musique / Création' : 'Development / Music / Creation'}{' '}
-        — tristan.kresov.com
+        / tristan.kresov.com
       </div>
     </div>,
     size,
